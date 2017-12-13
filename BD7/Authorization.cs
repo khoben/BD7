@@ -35,6 +35,7 @@ namespace BD7
                 Environment.Exit(1);
             }
             InitializeComponent();
+
         }
 
         private void enterButton_Click(object sender, EventArgs e)

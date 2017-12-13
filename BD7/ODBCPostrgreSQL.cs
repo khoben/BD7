@@ -8,13 +8,13 @@ namespace BD7
 {
     public class ODBCPostrgreSQL
     {
-        
+
         private static ODBCPostrgreSQL instance = null;
         private NpgsqlConnection _connection;
 
-        public static ODBCPostrgreSQL CreateODBCPostgreSQL(string host, string port, string username, 
-            string password, string database, string sslMode="Require", 
-            string trustServerCertificate="true")
+        public static ODBCPostrgreSQL CreateODBCPostgreSQL(string host, string port, string username,
+            string password, string database, string sslMode = "Require",
+            string trustServerCertificate = "true")
         {
             if (instance != null)
             {
@@ -30,7 +30,7 @@ namespace BD7
         }
 
         private ODBCPostrgreSQL(string connectionString)
-        {   
+        {
             _connection = new NpgsqlConnection(connectionString);
             _connection.Open();
         }
@@ -56,7 +56,7 @@ namespace BD7
             DataGridView tableView = null)
         {
             string selectString = "select ";
-            
+
             if (values == null)
             {
                 selectString += "* ";
@@ -84,6 +84,7 @@ namespace BD7
                 tableView.DataSource = dataTable;
 
                 adapter.Fill(dataTable);
+                tableView.Columns["ID"].Visible = false;
             }
 
             return adapter;

@@ -110,6 +110,7 @@ namespace BD7
                 Authorization.ODBC.Select("\"Client\"", tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
+                    ["\"ID\""] = "\"ID\"",
                     ["\"Name\""] = "\"Имя\"",
                     ["\"Surname\""] = "\"Фамилия\"",
                     ["\"Otch\""] = "\"Отчество\"",
