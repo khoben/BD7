@@ -116,7 +116,7 @@
             this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
             this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.изменитьToolStripMenuItem.Text = "Изменить";
-            this.изменитьToolStripMenuItem.Click += new System.EventHandler(this.UpdateEntry);
+            this.изменитьToolStripMenuItem.Click += new System.EventHandler(this.изменитьToolStripMenuItem_Click);
             // 
             // удалитьToolStripMenuItem
             // 
@@ -304,10 +304,10 @@
             this.dataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.Size = new System.Drawing.Size(755, 200);
             this.dataGridView.TabIndex = 1;
+            this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             // 
             // queryInfoLabel
             // 

@@ -192,7 +192,19 @@ namespace BD7
             _link.Close();
         }
 
-        private void UpdateEntry(object sender, EventArgs e)
+        private List<string> getRowValues(int id)
+        {
+            List<string> values = new List<string>();
+
+            foreach (DataGridViewCell cell in dataGridView.Rows[id].Cells)
+            {
+                values.Add(cell.Value.ToString());
+            }
+
+            return values;
+        }
+
+        private void UpdateEntry()
         {
             bool no_access;
             switch (_current_table)
@@ -222,8 +234,9 @@ namespace BD7
 
                 //Authorization.ODBC.Delete(_current_table, new Tuple<string, string>("\"ID\"", id));
 
-                List<string> columnNames = Authorization.ODBC.GetTableColumnsName(_current_table.Substring(1, _current_table.Length - 2));
-                List<string> columnValues = Authorization.ODBC.GetTableColumnsValue(_current_table, id);
+                List<string> columnNames = Authorization.ODBC.GetTableColumnsName(_current_table);
+
+                List<string> columnValues = getRowValues(index);
 
                 Authorization.ODBC.Update(_current_table, id, columnNames, columnValues);
                 _currFunc(null, null);
@@ -233,6 +246,16 @@ namespace BD7
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateEntry();
+        }
+
+        private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateEntry();
         }
     }
 }

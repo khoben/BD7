@@ -134,37 +134,29 @@ namespace BD7
 
         public List<string> GetTableColumnsName(string table)
         {
-            string query = String.Format("SELECT \"column_name\" FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{0}'", table);
-            NpgsqlCommand command = new NpgsqlCommand(query, _connection);
-            NpgsqlDataReader dr = command.ExecuteReader();
-
-            List<string> columnNames = new List<string>();
-
-            while (dr.Read())
-            {
-                columnNames.Add(dr[0].ToString());
-            }
-            dr.Close();
-            return columnNames;
-        }
-
-        public List<string> GetTableColumnsValue(string table, string id)
-        {
-            string query = String.Format("SELECT * FROM {0} WHERE \"ID\" = {1}", table, id);
-            NpgsqlCommand command = new NpgsqlCommand(query, _connection);
-            NpgsqlDataReader dr = command.ExecuteReader();
-
-            List<string> columnValues = new List<string>();
-
-            while (dr.Read())
-            {
-                for (int i = 0; i < dr.FieldCount; i++)
+            List<string> names = new List<string>();
+            NpgsqlDataAdapter adapter = Select(table, tableView: null, // Для правильного порядка
+                values: new Dictionary<string, string>()
                 {
-                    columnValues.Add(dr[i].ToString());
+                    ["\"ID\""] = "\"ID\"",
+                    ["\"Name\""] = "\"Name\"",
+                    ["\"Surname\""] = "\"Surname\"",
+                    ["\"Otch\""] = "\"Otch\"",
+                    ["\"Passport_series\""] = "\"Passport_series\"",
+                    ["\"Passport_ID\""] = "\"Passport_ID\"",
+                    ["\"Date_of_Birth\""] = "\"Date_of_Birth\"",
+                    ["\"Home_address\""] = "\"Home_address\"",
+                    ["\"INN\""] = "\"INN\""
                 }
+                );
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            foreach (DataColumn column in dataTable.Columns)
+            {
+                names.Add(column.ColumnName);
             }
-            dr.Close();
-            return columnValues;
+            return names;
+
         }
 
         /// <summary>
@@ -184,9 +176,11 @@ namespace BD7
                     continue;
                 if (name[i].Split('_')[0] == "Date")
                 {
+
                     DateTime date = DateTime.ParseExact(value[i], "dd.MM.yyyy H:mm:ss",
                                        System.Globalization.CultureInfo.InvariantCulture);
                     value[i] = date.ToString("yyyy-MM-dd HH:mm:ss");
+
                 }
                 updateString += "\"" + name[i] + "\" = '" + value[i] + "' ,";
             }
