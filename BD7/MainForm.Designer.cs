@@ -34,6 +34,9 @@
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.queryInfoLabel = new System.Windows.Forms.Label();
+            this.searchPatternTextBox = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -81,17 +84,47 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 64);
+            this.dataGridView.Location = new System.Drawing.Point(12, 95);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.Size = new System.Drawing.Size(1132, 307);
             this.dataGridView.TabIndex = 1;
             // 
+            // queryInfoLabel
+            // 
+            this.queryInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.queryInfoLabel.Location = new System.Drawing.Point(12, 44);
+            this.queryInfoLabel.Name = "queryInfoLabel";
+            this.queryInfoLabel.Size = new System.Drawing.Size(1132, 36);
+            this.queryInfoLabel.TabIndex = 2;
+            this.queryInfoLabel.Text = "Не выполнено ни одного запроса";
+            this.queryInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // searchPatternTextBox
+            // 
+            this.searchPatternTextBox.Location = new System.Drawing.Point(130, 443);
+            this.searchPatternTextBox.Name = "searchPatternTextBox";
+            this.searchPatternTextBox.Size = new System.Drawing.Size(206, 26);
+            this.searchPatternTextBox.TabIndex = 3;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(385, 438);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(104, 36);
+            this.searchButton.TabIndex = 4;
+            this.searchButton.Text = "Поиск";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.Search);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1156, 396);
+            this.ClientSize = new System.Drawing.Size(1156, 496);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.searchPatternTextBox);
+            this.Controls.Add(this.queryInfoLabel);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -114,5 +147,8 @@
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Label queryInfoLabel;
+        private System.Windows.Forms.TextBox searchPatternTextBox;
+        private System.Windows.Forms.Button searchButton;
     }
 }

@@ -27,6 +27,12 @@ namespace BD7
             _link.Close();
         }
 
+        public void Search(object sender, EventArgs e)
+        {
+            SearchResult search = new SearchResult();
+            search.Show();
+            search.MakeSearch(searchPatternTextBox.Text, dataGridView);
+        }
 
         // список клиентов
         private void ClientsList(object sender, EventArgs e)
@@ -45,6 +51,10 @@ namespace BD7
                     ["\"INN\""] = "\"ИНН\""
                 }
             );
+            
+            
+
+            queryInfoLabel.Text = "Список клиентов";
         }
     }
 }
