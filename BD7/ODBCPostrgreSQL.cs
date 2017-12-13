@@ -122,13 +122,77 @@ namespace BD7
         public void Delete(string table, Tuple<string, string> condition)
         {
             string deleteString = "delete from " + table + " ";
-            if (condition != null)
-            {
-                deleteString += String.Format("where {0}={1}", condition.Item1, condition.Item2);
-            }
+
+            if (condition == null)
+                return;
+
+            deleteString += String.Format("where {0}={1}", condition.Item1, condition.Item2);
 
             NpgsqlCommand command = new NpgsqlCommand(deleteString, _connection);
             command.ExecuteNonQuery();
+        }
+
+        public List<string> GetTableColumnsName(string table)
+        {
+            string query = String.Format("SELECT \"column_name\" FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{0}'", table);
+            NpgsqlCommand command = new NpgsqlCommand(query, _connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+
+            List<string> columnNames = new List<string>();
+
+            while (dr.Read())
+            {
+                columnNames.Add(dr[0].ToString());
+            }
+            dr.Close();
+            return columnNames;
+        }
+
+        public List<string> GetTableColumnsValue(string table, string id)
+        {
+            string query = String.Format("SELECT * FROM {0} WHERE \"ID\" = {1}", table, id);
+            NpgsqlCommand command = new NpgsqlCommand(query, _connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+
+            List<string> columnValues = new List<string>();
+
+            while (dr.Read())
+            {
+                for (int i = 0; i < dr.FieldCount; i++)
+                {
+                    columnValues.Add(dr[i].ToString());
+                }
+            }
+            dr.Close();
+            return columnValues;
+        }
+
+        /// <summary>
+        /// Обновление записи в таблице.
+        /// </summary>
+        public void Update(string table, string idEntry, List<string> name, List<string> value)
+        {
+            //"Update <table> set <what>=<value>, ... where ID=<idEntry>;
+            string updateString = "update " + table + " set ";
+
+            if (value == null || name == null)
+                return;
+
+            for (int i = 0; i < name.Count; i++)
+            {
+                if (name[i] == "Date_of_Birth" || value[i] == "" || name[i] == "ID")
+                    continue;
+                updateString += "\"" + name[i] + "\" = '" + value[i] + "' ,";
+            }
+
+            updateString = updateString.Substring(0, updateString.Length - 2);
+            updateString += String.Format(" where \"ID\" = {0}", idEntry);
+
+            MessageBox.Show(updateString);
+
+            NpgsqlCommand command = new NpgsqlCommand(updateString, _connection);
+            command.ExecuteNonQuery();
+
         }
     }
 }

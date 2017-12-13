@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Npgsql;
 
 namespace BD7
 {
@@ -189,6 +190,49 @@ namespace BD7
         private void topLevelExit_Click(object sender, EventArgs e)
         {
             _link.Close();
+        }
+
+        private void UpdateEntry(object sender, EventArgs e)
+        {
+            bool no_access;
+            switch (_current_table)
+            {
+                case "\"Client\"":
+                    no_access = NoAccessMessageBox(
+                        _currentRole == AccessRoles.Director
+                        || _currentRole == AccessRoles.Manager
+                    );
+                    break;
+                default:
+                    no_access = false;
+                    break;
+            }
+            if (no_access)
+                return;
+
+            int index = GetSelectedRow();
+            if (index == -1 || _currFunc == null || _current_table == "")
+            {
+                MessageBox.Show("Необходимо выбрать строку");
+                return;
+            }
+            try
+            {
+                string id = dataGridView["ID", index].Value.ToString();
+
+                //Authorization.ODBC.Delete(_current_table, new Tuple<string, string>("\"ID\"", id));
+
+                List<string> columnNames = Authorization.ODBC.GetTableColumnsName(_current_table.Substring(1, _current_table.Length - 2));
+                List<string> columnValues = Authorization.ODBC.GetTableColumnsValue(_current_table, id);
+
+                Authorization.ODBC.Update(_current_table, id, columnNames, columnValues);
+                _currFunc(null, null);
+                MessageBox.Show("Строка успешно обновлена");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }
