@@ -14,18 +14,20 @@ namespace BD7
 {
     public partial class Authorization : Form
     {
-        public static NpgsqlConnection Connection { private set; get; }
-        public const string CONNECTION_STRING = "Host=174.129.195.73;" +
-            "Port=5432; Username=jgompwtodtycna; Password=5677ee64b6c00a044d0f7fb4be945d0fd0be95fd4fcbe48d3e7caf77ad060ac7;" +
-            "Database=d2mqvjtl2st7rf; SSL Mode=Require;Trust Server Certificate=true";
+        // обертка для соединения с базой PGsql
+        public static ODBCPostrgreSQL ODBC { private set; get; }
 
         public Authorization()
-        {           
-            
+        {                    
             try
             {
-                Connection = new NpgsqlConnection(CONNECTION_STRING);
-                Connection.Open();
+                ODBC = ODBCPostrgreSQL.CreateODBCPostgreSQL(
+                    host: "174.129.195.73", 
+                    port: "5432",
+                    username: "jgompwtodtycna", 
+                    password: "5677ee64b6c00a044d0f7fb4be945d0fd0be95fd4fcbe48d3e7caf77ad060ac7",
+                    database: "d2mqvjtl2st7rf"
+                );
             }
             catch (Exception ex)
             {
@@ -37,7 +39,25 @@ namespace BD7
 
         private void enterButton_Click(object sender, EventArgs e)
         {
+            string login = loginTextBox.Text;
+            string password = passwordTextBox.Text;
+            AccessRoles role;
 
+            // работник отдела по работе с клиентами
+            if (login == "manager" && password == "12345")
+            {
+                role = AccessRoles.Manager;
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
+                return;
+            }
+
+            // вывести на экран форму и передать ей роль управления
+            // в соответствии с введенным логином и паролем
+            new MainForm(role, this).Show();
+            Hide();         // скроем логинку
         }
     }
 }
