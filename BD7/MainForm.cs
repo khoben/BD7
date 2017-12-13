@@ -184,5 +184,10 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        private void topLevelExit_Click(object sender, EventArgs e)
+        {
+            _link.Close();
+        }
     }
 }
