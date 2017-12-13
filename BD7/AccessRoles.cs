@@ -8,9 +8,10 @@ namespace BD7
 {
     public enum AccessRoles
     {
-        Manager,
-        Dispatcher,
-        Director,
-
+        Manager,                    // сотрудник отдела по работе с клиентами
+        Dispatcher,                 // диспетчер
+        Director,                   // директор
+        Accountant,                  // бухгалтер
+        Inspector                   // начальник наряда
     }
 }

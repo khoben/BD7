@@ -88,5 +88,29 @@ namespace BD7
 
             return adapter;
         }
+
+
+        /// <summary>
+        /// Вставляет в таблицу table значения из словаря vals
+        /// </summary>
+        /// <param name="table">Таблица, куда будем вставлять.</param>
+        /// <param name="vals">Ключи словаря - это столбцы, куда вставляем, а значения, что вставляем.</param>
+        public void Insert(string table, Dictionary<string, string> vals)
+        {
+            string where = "";              // что вставляем
+            string what = "";               // куда вставляем
+
+            foreach (var pair in vals)
+            {
+                where += pair.Key + ", ";
+                what += pair.Value + ", ";
+            }
+            where = where.Substring(0, where.Length - 2);
+            what = what.Substring(0, what.Length - 2);
+
+            string insertString = String.Format("insert into {0} ({1}) values ({2})", table, where, what);
+            NpgsqlCommand command = new NpgsqlCommand(insertString, _connection);
+            command.ExecuteNonQuery();
+        }
     }
 }

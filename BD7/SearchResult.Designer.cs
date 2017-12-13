@@ -60,6 +60,7 @@
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.dataGridView);
             this.Name = "SearchResult";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Результаты поиска";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

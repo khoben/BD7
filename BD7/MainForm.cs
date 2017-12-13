@@ -7,11 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace BD7
 {
     public partial class MainForm : Form
     {
+        // этот кусок кода нужен, чтобы убрать закрывающий крестик на форме
+        const int MF_BYPOSITION = 0x400;
+        [DllImport("User32")]
+        private static extern int RemoveMenu(IntPtr hMenu, int nPosition, int wFlags);
+
+        [DllImport("User32")]
+        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+
+        [DllImport("User32")]
+        private static extern int GetMenuItemCount(IntPtr hWnd);
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            IntPtr hMenu = GetSystemMenu(Handle, false);
+            int menuItemCount = GetMenuItemCount(hMenu);
+            RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
+        }
+        // ------------------------------------
+
         private AccessRoles _currentRole;           // уровень доступа
         private Authorization _link;
 
@@ -22,12 +42,36 @@ namespace BD7
             _link = link;
         }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        /// <summary>
+        /// Если condition false, показывает MessageBox с предупреждением
+        /// </summary>
+        /// <param name="condition">Условие, обозначющее, есть ли доступ у этого юзера</param>
+        /// <returns>true, если messagebox был показан</returns>
+        private bool NoAccessMessageBox(bool condition)
+        {
+            if (!condition)
+            {
+                MessageBox.Show("У вас нет прав для выполнения данной операции");
+                return true;
+            }
+            return false;
+        }
+
+        // при закрытии формы, также выходим из приложения
+        private void OnClose(object sender, EventArgs e)
         {
             _link.Close();
         }
 
-        public void Search(object sender, EventArgs e)
+        // смена пользователя
+        private void OnChangeUser(object sender, EventArgs e)
+        {
+            _link.Reset();
+            Close();
+        }
+
+        // поиск
+        private void Search(object sender, EventArgs e)
         {
             SearchResult search = new SearchResult();
             search.Show();
@@ -52,9 +96,23 @@ namespace BD7
                 }
             );
             
-            
-
             queryInfoLabel.Text = "Список клиентов";
         }
+
+        // добавить клиента
+        private void AddClient(object sender, EventArgs e)
+        {
+            // добавлять клиентов могут только директор и 
+            // сотрудник отдела по работе с клиентами
+            if (NoAccessMessageBox(
+                _currentRole == AccessRoles.Director 
+                || _currentRole == AccessRoles.Manager)
+            )
+                return;
+
+            new AddClient().Show();
+
+        }
+        
     }
 }

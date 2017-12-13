@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessRoles.cs" />
+    <Compile Include="AddClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddClient.Designer.cs">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="SearchResult.Designer.cs">
       <DependentUpon>SearchResult.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddClient.resx">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>

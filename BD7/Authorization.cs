@@ -48,6 +48,25 @@ namespace BD7
             {
                 role = AccessRoles.Manager;
             }
+
+            // бухгалтер
+            else if (login == "accountant" && password == "12345")
+            {
+                role = AccessRoles.Accountant;
+            }
+
+            // диспетчер
+            else if (login == "dispatcher" && password == "12345")
+            {
+                role = AccessRoles.Dispatcher;
+            }
+
+            // начальник наряда
+            else if (login == "inspector" && password == "12345")
+            {
+                role = AccessRoles.Inspector;
+            }
+
             else
             {
                 MessageBox.Show("Неверный логин или пароль");
@@ -58,6 +77,13 @@ namespace BD7
             // в соответствии с введенным логином и паролем
             new MainForm(role, this).Show();
             Hide();         // скроем логинку
+        }
+
+        public void Reset()
+        {
+            Show();
+            loginTextBox.Text = "";
+            passwordTextBox.Text = "";
         }
     }
 }
