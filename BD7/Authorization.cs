@@ -18,13 +18,13 @@ namespace BD7
         public static ODBCPostrgreSQL ODBC { private set; get; }
 
         public Authorization()
-        {                    
+        {
             try
             {
                 ODBC = ODBCPostrgreSQL.CreateODBCPostgreSQL(
-                    host: "174.129.195.73", 
+                    host: "174.129.195.73",
                     port: "5432",
-                    username: "jgompwtodtycna", 
+                    username: "jgompwtodtycna",
                     password: "5677ee64b6c00a044d0f7fb4be945d0fd0be95fd4fcbe48d3e7caf77ad060ac7",
                     database: "d2mqvjtl2st7rf"
                 );
@@ -75,8 +75,9 @@ namespace BD7
 
             // вывести на экран форму и передать ей роль управления
             // в соответствии с введенным логином и паролем
-            new MainForm(role, this).Show();
+
             Hide();         // скроем логинку
+            new MainForm(role, this).Show();
         }
 
         public void Reset()

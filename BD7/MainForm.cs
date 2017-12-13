@@ -91,6 +91,11 @@ namespace BD7
         // поиск
         private void Search(object sender, EventArgs e)
         {
+            if (searchPatternTextBox.Text.Length == 0)
+            {
+                MessageBox.Show("Пустой поисковый запрос");
+                return;
+            }
             SearchResult search = new SearchResult();
             search.Show();
             search.MakeSearch(searchPatternTextBox.Text, dataGridView);
@@ -105,7 +110,6 @@ namespace BD7
                 Authorization.ODBC.Select("\"Client\"", tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
-                    ["\"ID\""] = "\"ID\"",
                     ["\"Name\""] = "\"Имя\"",
                     ["\"Surname\""] = "\"Фамилия\"",
                     ["\"Otch\""] = "\"Отчество\"",
@@ -124,8 +128,8 @@ namespace BD7
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            
-            
+
+
         }
 
         // добавить клиента
@@ -134,7 +138,7 @@ namespace BD7
             // добавлять клиентов могут только директор и 
             // сотрудник отдела по работе с клиентами
             if (NoAccessMessageBox(
-                _currentRole == AccessRoles.Director 
+                _currentRole == AccessRoles.Director
                 || _currentRole == AccessRoles.Manager)
             )
                 return;
@@ -142,7 +146,7 @@ namespace BD7
             new AddClient().Show();
 
         }
-        
+
         private void DeleteClient(object sendet, EventArgs e)
         {
             bool no_access;
@@ -170,7 +174,7 @@ namespace BD7
             try
             {
                 string id = dataGridView["ID", index].Value.ToString();
-                
+
                 Authorization.ODBC.Delete(_current_table, new Tuple<string, string>("\"ID\"", id));
                 _currFunc(null, null);
                 MessageBox.Show("Строка успешно удалена");
