@@ -61,6 +61,7 @@
             this.searchPatternTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteRowButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -96,7 +97,7 @@
             // списокToolStripMenuItem
             // 
             this.списокToolStripMenuItem.Name = "списокToolStripMenuItem";
-            this.списокToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.списокToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
             this.списокToolStripMenuItem.Text = "Список";
             this.списокToolStripMenuItem.Click += new System.EventHandler(this.ClientsList);
             // 
@@ -110,7 +111,7 @@
             // изменитьToolStripMenuItem
             // 
             this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
-            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
             this.изменитьToolStripMenuItem.Text = "Изменить";
             // 
             // договораToolStripMenuItem
@@ -278,9 +279,13 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 95);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.Size = new System.Drawing.Size(1132, 307);
             this.dataGridView.TabIndex = 1;
@@ -317,12 +322,24 @@
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
             this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
             this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.DeleteClient);
+            // 
+            // deleteRowButton
+            // 
+            this.deleteRowButton.Location = new System.Drawing.Point(917, 438);
+            this.deleteRowButton.Name = "deleteRowButton";
+            this.deleteRowButton.Size = new System.Drawing.Size(227, 36);
+            this.deleteRowButton.TabIndex = 5;
+            this.deleteRowButton.Text = "Удалить строку";
+            this.deleteRowButton.UseVisualStyleBackColor = true;
+            this.deleteRowButton.Click += new System.EventHandler(this.DeleteClient);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1156, 496);
+            this.Controls.Add(this.deleteRowButton);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchPatternTextBox);
             this.Controls.Add(this.queryInfoLabel);
@@ -375,5 +392,6 @@
         private System.Windows.Forms.ToolStripMenuItem сменитьПользователяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.Button deleteRowButton;
     }
 }

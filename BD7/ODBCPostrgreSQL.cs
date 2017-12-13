@@ -112,5 +112,22 @@ namespace BD7
             NpgsqlCommand command = new NpgsqlCommand(insertString, _connection);
             command.ExecuteNonQuery();
         }
+
+        /// <summary>
+        /// Удаляет информацию из таблицы по заданным условиям в кортеже.
+        /// </summary>
+        /// <param name="table">Таблица из которой удаляем</param>
+        /// <param name="condition">Для конструкции вида: where Item1=Item2</param>
+        public void Delete(string table, Tuple<string, string> condition)
+        {
+            string deleteString = "delete from " + table + " ";
+            if (condition != null)
+            {
+                deleteString += String.Format("where {0}={1}", condition.Item1, condition.Item2);
+            }
+
+            NpgsqlCommand command = new NpgsqlCommand(deleteString, _connection);
+            command.ExecuteNonQuery();
+        }
     }
 }

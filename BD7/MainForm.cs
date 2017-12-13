@@ -34,6 +34,10 @@ namespace BD7
 
         private AccessRoles _currentRole;           // уровень доступа
         private Authorization _link;
+        private string _current_table = "";
+        private delegate void CurrentFunction(object sender, EventArgs e);
+        private CurrentFunction _currFunc = null;
+
 
         public MainForm(AccessRoles role, Authorization link)
         {
@@ -70,6 +74,20 @@ namespace BD7
             Close();
         }
 
+        private int GetSelectedRow()
+        {
+            int index;
+            try
+            {
+                index = dataGridView.CurrentCell.RowIndex;
+            }
+            catch (Exception)
+            {
+                index = -1;
+            }
+            return index;
+        }
+
         // поиск
         private void Search(object sender, EventArgs e)
         {
@@ -82,9 +100,12 @@ namespace BD7
         private void ClientsList(object sender, EventArgs e)
         {
             // select из таблицы Client
-            Authorization.ODBC.Select("\"Client\"", tableView: dataGridView, 
+            try
+            {
+                Authorization.ODBC.Select("\"Client\"", tableView: dataGridView,
                 values: new Dictionary<string, string>()
                 {
+                    ["\"ID\""] = "\"ID\"",
                     ["\"Name\""] = "\"Имя\"",
                     ["\"Surname\""] = "\"Фамилия\"",
                     ["\"Otch\""] = "\"Отчество\"",
@@ -94,9 +115,17 @@ namespace BD7
                     ["\"Home_address\""] = "\"Домашний адрес\"",
                     ["\"INN\""] = "\"ИНН\""
                 }
-            );
+                );
+                queryInfoLabel.Text = "Список клиентов";
+                _currFunc = ClientsList;
+                _current_table = "\"Client\"";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
             
-            queryInfoLabel.Text = "Список клиентов";
+            
         }
 
         // добавить клиента
@@ -114,5 +143,42 @@ namespace BD7
 
         }
         
+        private void DeleteClient(object sendet, EventArgs e)
+        {
+            bool no_access;
+            switch (_current_table)
+            {
+                case "\"Client\"":
+                    no_access = NoAccessMessageBox(
+                        _currentRole == AccessRoles.Director
+                        || _currentRole == AccessRoles.Manager
+                    );
+                    break;
+                default:
+                    no_access = false;
+                    break;
+            }
+            if (no_access)
+                return;
+
+            int index = GetSelectedRow();
+            if (index == -1 || _currFunc == null || _current_table == "")
+            {
+                MessageBox.Show("Необходимо выбрать строку");
+                return;
+            }
+            try
+            {
+                string id = dataGridView["ID", index].Value.ToString();
+                
+                Authorization.ODBC.Delete(_current_table, new Tuple<string, string>("\"ID\"", id));
+                _currFunc(null, null);
+                MessageBox.Show("Строка успешно удалена");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
     }
 }
