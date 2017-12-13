@@ -22,11 +22,11 @@ namespace BD7
             try
             {
                 ODBC = ODBCPostrgreSQL.CreateODBCPostgreSQL(
-                    host: "174.129.195.73",
-                    port: "5432",
-                    username: "jgompwtodtycna",
-                    password: "5677ee64b6c00a044d0f7fb4be945d0fd0be95fd4fcbe48d3e7caf77ad060ac7",
-                    database: "d2mqvjtl2st7rf"
+                    host: Config.host,
+                    port: Config.port,
+                    username: Config.username,
+                    password: Config.password,
+                    database: Config.database
                 );
             }
             catch (Exception ex)
