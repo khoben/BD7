@@ -180,8 +180,15 @@ namespace BD7
 
             for (int i = 0; i < name.Count; i++)
             {
-                if (name[i] == "Date_of_Birth" || value[i] == "" || name[i] == "ID")
+                if (value[i] == "" || name[i] == "ID")
                     continue;
+                if (name[i].Split('_')[0] == "Date")
+                {
+                    MessageBox.Show(value[i]);
+                    DateTime date = DateTime.ParseExact(value[i], "dd.MM.yyyy H:mm:ss",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+                    value[i] = date.ToString("yyyy-MM-dd HH:mm:ss");
+                }
                 updateString += "\"" + name[i] + "\" = '" + value[i] + "' ,";
             }
 
