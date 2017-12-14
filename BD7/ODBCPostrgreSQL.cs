@@ -44,6 +44,9 @@ namespace BD7
 
 
 
+        //Поля с внешними ключами, можно выбрать по имени в combox`e
+        //Названия этих полей нужно указать в replaceCombo в файле Config.cs
+        //Внешние ключи начинаются с ID_***
         /// <summary>
         /// Возвращает объект NpgsqlDataAdapter.
         /// table - таблица, из которой будем выбирать.
@@ -65,6 +68,16 @@ namespace BD7
             {
                 foreach (KeyValuePair<string, string> pair in values)
                 {
+                    { // Клеим серию с номером паспорта у таблицы Client
+                        if (pair.Key == "\"Passport_series\"")
+                        {
+                            selectString += "\"Passport_series\" || ' ' || \"Passport_ID\" as Паспорт, ";
+                            continue;
+                        }
+                        if (pair.Key == "\"Passport_ID\"")
+                            continue;
+                    }
+
                     selectString += String.Format("{0} as {1}, ", pair.Key, pair.Value);
                 }
                 // убираем запятую в конце
@@ -156,6 +169,13 @@ namespace BD7
                                        System.Globalization.CultureInfo.InvariantCulture);
                     value[i] = date.ToString("yyyy-MM-dd HH:mm:ss");
 
+                }
+                //Клеим паспорт
+                if (name[i] == "Passport")
+                {
+                    updateString += "\"Passport_series\" = '" + value[i].Split(' ')[0] + "' ,";
+                    updateString += "\"Passport_ID\" = '" + value[i].Split(' ')[1] + "' ,";
+                    continue;
                 }
                 updateString += "\"" + name[i] + "\" = '" + value[i] + "' ,";
             }

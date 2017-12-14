@@ -15,6 +15,7 @@ namespace BD7
     public partial class MainForm : Form
     {
         // этот кусок кода нужен, чтобы убрать закрывающий крестик на форме
+
         const int MF_BYPOSITION = 0x400;
         [DllImport("User32")]
         private static extern int RemoveMenu(IntPtr hMenu, int nPosition, int wFlags);
@@ -105,7 +106,8 @@ namespace BD7
         // список клиентов
         private void ClientsList(object sender, EventArgs e)
         {
-            // select из таблицы Client
+            // select из таблицы Client 
+            // TODO: Надо бы склеить серию и номер паспорта
             try
             {
                 Authorization.ODBC.Select("\"Client\"", tableView: dataGridView,
@@ -125,6 +127,7 @@ namespace BD7
                 queryInfoLabel.Text = "Список клиентов";
                 _currFunc = ClientsList;
                 _current_table = "\"Client\"";
+
             }
             catch (Exception ex)
             {
@@ -217,6 +220,7 @@ namespace BD7
             return names;
         }
 
+        //Обновление записи в таблице через DataGridView
 
         private void UpdateEntry()
         {
@@ -246,8 +250,8 @@ namespace BD7
             {
                 string id = dataGridView["ID", index].Value.ToString();
 
+                //TODO: Можно объединить в словарь
                 List<string> columnNames = GetTableColumnsName(_current_table);
-
                 List<string> columnValues = GetRowValues(index);
 
                 Authorization.ODBC.Update(_current_table, id, columnNames, columnValues);
@@ -267,7 +271,7 @@ namespace BD7
 
         private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UpdateEntry();
+
         }
     }
 }

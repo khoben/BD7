@@ -20,8 +20,7 @@ namespace BD7
             ["Имя"] = "Name",
             ["Фамилия"] = "Surname",
             ["Отчество"] = "Otch",
-            ["Серия паспорта"] = "Passport_series",
-            ["Номер"] = "Passport_ID",
+            ["Паспорт"] = "Passport",
             ["Дата рождения"] = "Date_of_Birth",
             ["Домашний адрес"] = "Home_address",
             ["ИНН"] = "INN"
