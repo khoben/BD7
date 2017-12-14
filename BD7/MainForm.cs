@@ -192,7 +192,7 @@ namespace BD7
             _link.Close();
         }
 
-        private List<string> getRowValues(int id)
+        private List<string> GetRowValues(int id)
         {
             List<string> values = new List<string>();
 
@@ -203,6 +203,20 @@ namespace BD7
 
             return values;
         }
+
+        //TODO: Добавить словари для остальных таблиц
+        public List<string> GetTableColumnsName(string table)
+        {
+            List<string> names = new List<string>();
+
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                names.Add(Config.clientEnglishColumns[column.Name]);
+            }
+
+            return names;
+        }
+
 
         private void UpdateEntry()
         {
@@ -232,11 +246,9 @@ namespace BD7
             {
                 string id = dataGridView["ID", index].Value.ToString();
 
-                //Authorization.ODBC.Delete(_current_table, new Tuple<string, string>("\"ID\"", id));
+                List<string> columnNames = GetTableColumnsName(_current_table);
 
-                List<string> columnNames = Authorization.ODBC.GetTableColumnsName(_current_table);
-
-                List<string> columnValues = getRowValues(index);
+                List<string> columnValues = GetRowValues(index);
 
                 Authorization.ODBC.Update(_current_table, id, columnNames, columnValues);
                 _currFunc(null, null);

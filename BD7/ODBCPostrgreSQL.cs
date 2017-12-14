@@ -132,32 +132,7 @@ namespace BD7
             command.ExecuteNonQuery();
         }
 
-        public List<string> GetTableColumnsName(string table)
-        {
-            List<string> names = new List<string>();
-            NpgsqlDataAdapter adapter = Select(table, tableView: null, // Для правильного порядка
-                values: new Dictionary<string, string>()
-                {
-                    ["\"ID\""] = "\"ID\"",
-                    ["\"Name\""] = "\"Name\"",
-                    ["\"Surname\""] = "\"Surname\"",
-                    ["\"Otch\""] = "\"Otch\"",
-                    ["\"Passport_series\""] = "\"Passport_series\"",
-                    ["\"Passport_ID\""] = "\"Passport_ID\"",
-                    ["\"Date_of_Birth\""] = "\"Date_of_Birth\"",
-                    ["\"Home_address\""] = "\"Home_address\"",
-                    ["\"INN\""] = "\"INN\""
-                }
-                );
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            foreach (DataColumn column in dataTable.Columns)
-            {
-                names.Add(column.ColumnName);
-            }
-            return names;
 
-        }
 
         /// <summary>
         /// Обновление записи в таблице.
