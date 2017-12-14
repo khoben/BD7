@@ -269,9 +269,17 @@ namespace BD7
             UpdateEntry();
         }
 
-        private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void добавитьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            // добавлять клиентов могут только директор и 
+            // сотрудник отдела по работе с клиентами
+            if (NoAccessMessageBox(
+                _currentRole == AccessRoles.Director
+                || _currentRole == AccessRoles.Manager)
+            )
+                return;
 
+            new AddContract().Show();
         }
     }
 }

@@ -102,5 +102,11 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            this.Close();
+        }
     }
 }
