@@ -403,8 +403,15 @@ namespace BD7
         {
             string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
 
-            var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm)) as Form;
-            form.Show();
+            try
+            {
+                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm)) as Form;
+                form.Show();
+            }
+            catch (ArgumentNullException arg)
+            {
+                MessageBox.Show("Форма для данного контекста еще не задана");
+            }
         }
     }
 }
