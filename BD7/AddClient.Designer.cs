@@ -45,7 +45,7 @@
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.birthTextBox = new System.Windows.Forms.MaskedTextBox();
             this.addButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.сancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -131,7 +131,7 @@
             // surnameTextBox
             // 
             this.surnameTextBox.Location = new System.Drawing.Point(145, 27);
-            this.surnameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.surnameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(105, 20);
             this.surnameTextBox.TabIndex = 8;
@@ -139,7 +139,7 @@
             // nameTextBox
             // 
             this.nameTextBox.Location = new System.Drawing.Point(145, 60);
-            this.nameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(105, 20);
             this.nameTextBox.TabIndex = 9;
@@ -147,7 +147,7 @@
             // otchTextBox
             // 
             this.otchTextBox.Location = new System.Drawing.Point(145, 95);
-            this.otchTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.otchTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.otchTextBox.Name = "otchTextBox";
             this.otchTextBox.Size = new System.Drawing.Size(105, 20);
             this.otchTextBox.TabIndex = 10;
@@ -155,7 +155,7 @@
             // passportSeriesTextBox
             // 
             this.passportSeriesTextBox.Location = new System.Drawing.Point(44, 152);
-            this.passportSeriesTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passportSeriesTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.passportSeriesTextBox.Name = "passportSeriesTextBox";
             this.passportSeriesTextBox.Size = new System.Drawing.Size(67, 20);
             this.passportSeriesTextBox.TabIndex = 11;
@@ -163,7 +163,7 @@
             // passportIDTextBox
             // 
             this.passportIDTextBox.Location = new System.Drawing.Point(145, 152);
-            this.passportIDTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passportIDTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.passportIDTextBox.Name = "passportIDTextBox";
             this.passportIDTextBox.Size = new System.Drawing.Size(105, 20);
             this.passportIDTextBox.TabIndex = 12;
@@ -171,7 +171,7 @@
             // innTextBox
             // 
             this.innTextBox.Location = new System.Drawing.Point(398, 28);
-            this.innTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.innTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.innTextBox.Name = "innTextBox";
             this.innTextBox.Size = new System.Drawing.Size(105, 20);
             this.innTextBox.TabIndex = 13;
@@ -179,7 +179,7 @@
             // addressTextBox
             // 
             this.addressTextBox.Location = new System.Drawing.Point(398, 101);
-            this.addressTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addressTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(105, 20);
             this.addressTextBox.TabIndex = 14;
@@ -187,7 +187,7 @@
             // birthTextBox
             // 
             this.birthTextBox.Location = new System.Drawing.Point(398, 63);
-            this.birthTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.birthTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.birthTextBox.Mask = "00/00/0000";
             this.birthTextBox.Name = "birthTextBox";
             this.birthTextBox.Size = new System.Drawing.Size(105, 20);
@@ -197,7 +197,7 @@
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(315, 175);
-            this.addButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addButton.Margin = new System.Windows.Forms.Padding(2);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(110, 30);
             this.addButton.TabIndex = 16;
@@ -205,22 +205,22 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddInfo);
             // 
-            // CancelButton
+            // сancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(451, 175);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(91, 30);
-            this.CancelButton.TabIndex = 17;
-            this.CancelButton.Text = "Отмена";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.сancelButton.Location = new System.Drawing.Point(453, 175);
+            this.сancelButton.Name = "сancelButton";
+            this.сancelButton.Size = new System.Drawing.Size(88, 30);
+            this.сancelButton.TabIndex = 17;
+            this.сancelButton.Text = "Отмена";
+            this.сancelButton.UseVisualStyleBackColor = true;
+            this.сancelButton.Click += new System.EventHandler(this.CancelAdding);
             // 
             // AddClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 227);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.сancelButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.birthTextBox);
             this.Controls.Add(this.addressTextBox);
@@ -238,7 +238,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddClient";
             this.Text = "Добавить клиента";
             this.ResumeLayout(false);
@@ -265,6 +265,6 @@
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.MaskedTextBox birthTextBox;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button сancelButton;
     }
 }

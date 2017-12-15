@@ -173,7 +173,7 @@ namespace BD7
             int index = GetSelectedRow();
             if (index == -1 || _currFunc == null || _current_table == "")
             {
-                MessageBox.Show("Необходимо выбрать строку");
+                MessageBox.Show("Необходимо выбрать строку.");
                 return;
             }
             try
@@ -182,7 +182,7 @@ namespace BD7
 
                 Authorization.ODBC.Delete(_current_table, new Tuple<string, string>("\"ID\"", id));
                 _currFunc(null, null);
-                MessageBox.Show("Строка успешно удалена");
+                MessageBox.Show("Запись успешно удалена.");
             }
             catch (Exception ex)
             {
@@ -243,7 +243,7 @@ namespace BD7
             int index = GetSelectedRow();
             if (index == -1 || _currFunc == null || _current_table == "")
             {
-                MessageBox.Show("Необходимо выбрать строку");
+                MessageBox.Show("Необходимо выбрать запись.");
                 return;
             }
             try
@@ -256,7 +256,7 @@ namespace BD7
 
                 Authorization.ODBC.Update(_current_table, id, columnNames, columnValues);
                 _currFunc(null, null);
-                MessageBox.Show("Строка успешно обновлена");
+                MessageBox.Show("Запись успешно обновлена.");
             }
             catch (Exception ex)
             {

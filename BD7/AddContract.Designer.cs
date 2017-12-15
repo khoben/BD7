@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.AddButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.сancelButton = new System.Windows.Forms.Button();
             this.DateLabel = new System.Windows.Forms.Label();
             this.SubcriptionLabel = new System.Windows.Forms.Label();
             this.FlatLabel = new System.Windows.Forms.Label();
@@ -52,15 +52,15 @@
             this.AddButton.Text = "Добавить";
             this.AddButton.UseVisualStyleBackColor = true;
             // 
-            // CancelButton
+            // сancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(296, 245);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(80, 35);
-            this.CancelButton.TabIndex = 1;
-            this.CancelButton.Text = "Отмена";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.сancelButton.Location = new System.Drawing.Point(296, 245);
+            this.сancelButton.Name = "сancelButton";
+            this.сancelButton.Size = new System.Drawing.Size(80, 35);
+            this.сancelButton.TabIndex = 1;
+            this.сancelButton.Text = "Отмена";
+            this.сancelButton.UseVisualStyleBackColor = true;
+            this.сancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // DateLabel
             // 
@@ -169,7 +169,7 @@
             this.Controls.Add(this.FlatLabel);
             this.Controls.Add(this.SubcriptionLabel);
             this.Controls.Add(this.DateLabel);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.сancelButton);
             this.Controls.Add(this.AddButton);
             this.Name = "AddContract";
             this.Text = "AddContract";
@@ -181,7 +181,7 @@
         #endregion
 
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button сancelButton;
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.Label SubcriptionLabel;
         private System.Windows.Forms.Label FlatLabel;

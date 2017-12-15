@@ -103,10 +103,12 @@ namespace BD7
             }
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void CancelAdding(object sender, EventArgs e)
         {
             ClearForm();
             this.Close();
         }
+
+
     }
 }
