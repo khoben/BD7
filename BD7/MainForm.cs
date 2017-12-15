@@ -34,14 +34,17 @@ namespace BD7
             RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
 
             this.LabelUsername.Text = "Пользователь: " + Authorization.login;
+
+            this.queryInfoLabel.Text = "Клиенты";
+            ClientsList();
         }
         // ------------------------------------
 
         private AccessRoles _currentRole;           // уровень доступа
         private Authorization _link;
         private string _current_table = "";
-        private delegate void CurrentFunction(object sender, EventArgs e);
-        private CurrentFunction _currFunc = null;
+        //private delegate void CurrentFunction(object sender, EventArgs e);
+        //private CurrentFunction _currFunc = null;
 
 
         public MainForm(AccessRoles role, Authorization link)
@@ -173,7 +176,7 @@ namespace BD7
                 return;
 
             int index = GetSelectedRow();
-            if (index == -1 || _currFunc == null || _current_table == "")
+            if (index == -1 || _current_table == "") //_currFunc == null 
             {
                 MessageBox.Show("Необходимо выбрать строку.");
                 return;
@@ -183,7 +186,7 @@ namespace BD7
                 string id = dataGridView["ID", index].Value.ToString();
 
                 Authorization.ODBC.Delete(_current_table, new Tuple<string, string>("\"ID\"", id));
-                _currFunc(null, null);
+                //_currFunc(null, null);
                 MessageBox.Show("Запись успешно удалена.");
             }
             catch (Exception ex)
@@ -216,7 +219,10 @@ namespace BD7
 
             foreach (DataGridViewColumn column in dataGridView.Columns)
             {
-                names.Add(Config.clientEnglishColumns[column.Name]);
+                if (_current_table == "\"Client\"") //TODO: Добавить русские названия
+                    names.Add(Config.clientEnglishColumns[column.Name]);
+                else
+                    names.Add(column.Name);
             }
 
             return names;
@@ -229,7 +235,12 @@ namespace BD7
             bool no_access;
             switch (_current_table)
             {
-                case "\"Client\"":
+                case "\"Client\"":   //TODO: Разделить права
+                case "\"Contract\"":
+                case "\"Employee\"":
+                case "\"Payment\"":
+                case "\"Fine\"":
+                case "\"Call\"":
                     no_access = NoAccessMessageBox(
                         _currentRole == AccessRoles.Director
                         || _currentRole == AccessRoles.Manager
@@ -243,7 +254,8 @@ namespace BD7
                 return;
 
             int index = GetSelectedRow();
-            if (index == -1 || _currFunc == null || _current_table == "")
+
+            if (index == -1 || _current_table == "")
             {
                 MessageBox.Show("Необходимо выбрать запись.");
                 return;
@@ -257,7 +269,7 @@ namespace BD7
                 List<string> columnValues = GetRowValues(index);
 
                 Authorization.ODBC.Update(_current_table, id, columnNames, columnValues);
-                _currFunc(null, null);
+                // _currFunc(null, null);
                 MessageBox.Show("Запись успешно обновлена.");
             }
             catch (Exception ex)
@@ -383,6 +395,16 @@ namespace BD7
             Type t = this.GetType();
             MethodInfo method = t.GetMethod(Config.methodTranslate[sender.ToString()] + "List");
             method.Invoke(this, null);
+        }
+
+
+
+        private void callFormFromCurrentContext(object sender, EventArgs e)
+        {
+            string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
+
+            var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm)) as Form;
+            form.Show();
         }
     }
 }

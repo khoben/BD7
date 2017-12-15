@@ -154,7 +154,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView.RowTemplate.Height = 28;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView.Size = new System.Drawing.Size(755, 200);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
@@ -210,6 +210,7 @@
             this.AddButton.TabIndex = 6;
             this.AddButton.Text = "Добавить";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.callFormFromCurrentContext);
             // 
             // EditButton
             // 
@@ -223,7 +224,7 @@
             // LabelUsername
             // 
             this.LabelUsername.AutoSize = true;
-            this.LabelUsername.Location = new System.Drawing.Point(625, 5);
+            this.LabelUsername.Location = new System.Drawing.Point(627, 29);
             this.LabelUsername.Name = "LabelUsername";
             this.LabelUsername.Size = new System.Drawing.Size(35, 13);
             this.LabelUsername.TabIndex = 8;
