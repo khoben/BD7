@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Npgsql;
+using System.Reflection;
 
 namespace BD7
 {
@@ -31,6 +32,8 @@ namespace BD7
             IntPtr hMenu = GetSystemMenu(Handle, false);
             int menuItemCount = GetMenuItemCount(hMenu);
             RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
+
+            this.LabelUsername.Text = "Пользователь: " + Authorization.login;
         }
         // ------------------------------------
 
@@ -104,7 +107,7 @@ namespace BD7
         }
 
         // список клиентов
-        private void ClientsList(object sender, EventArgs e)
+        public void ClientsList()
         {
             // select из таблицы Client 
             // TODO: Надо бы склеить серию и номер паспорта
@@ -124,8 +127,7 @@ namespace BD7
                     ["\"INN\""] = "\"ИНН\""
                 }
                 );
-                queryInfoLabel.Text = "Список клиентов";
-                _currFunc = ClientsList;
+
                 _current_table = "\"Client\"";
 
             }
@@ -280,6 +282,107 @@ namespace BD7
                 return;
 
             new AddContract().Show();
+        }
+
+        public void ContractsList()
+        {
+            try
+            {
+                string currentTable = "\"Contract\"";
+                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
+                values: null
+                );
+
+                _current_table = currentTable;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        public void EmployeesList()
+        {
+            try
+            {
+                string currentTable = "\"Employee\"";
+                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
+                values: null
+                );
+
+                _current_table = currentTable;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        public void PaymentsList()
+        {
+            try
+            {
+                string currentTable = "\"Payment\"";
+                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
+                values: null
+                );
+
+                _current_table = currentTable;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        public void FinesList()
+        {
+            try
+            {
+                string currentTable = "\"Fine\"";
+                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
+                values: null
+                );
+
+                _current_table = currentTable;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        public void CallsList()
+        {
+            try
+            {
+                string currentTable = "\"Call\"";
+                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
+                values: null
+                );
+
+                _current_table = currentTable;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+
+
+        private void ChangeCurrentContext(object sender, EventArgs e)
+        {
+            this.queryInfoLabel.Text = sender.ToString();
+
+            Type t = this.GetType();
+            MethodInfo method = t.GetMethod(Config.methodTranslate[sender.ToString()] + "List");
+            method.Invoke(this, null);
         }
     }
 }

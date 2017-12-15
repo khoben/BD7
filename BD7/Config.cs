@@ -25,6 +25,16 @@ namespace BD7
             ["Домашний адрес"] = "Home_address",
             ["ИНН"] = "INN"
         };
+
+        public static Dictionary<string, string> methodTranslate = new Dictionary<string, string>()
+        {
+            ["Клиенты"] = "Clients",
+            ["Договоры"] = "Contracts",
+            ["Сотрудники"] = "Employees",
+            ["Платежи"] = "Payments",
+            ["Штрафы"] = "Fines",
+            ["Сигналы тревоги"] = "Calls"
+        };
     }
 
 }

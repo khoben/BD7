@@ -17,6 +17,9 @@ namespace BD7
         // обертка для соединения с базой PGsql
         public static ODBCPostrgreSQL ODBC { private set; get; }
 
+        public static string login { private set; get; }
+        public static string password { private set; get; }
+
         public Authorization()
         {
             try
@@ -40,8 +43,8 @@ namespace BD7
 
         private void enterButton_Click(object sender, EventArgs e)
         {
-            string login = loginTextBox.Text;
-            string password = passwordTextBox.Text;
+            login = loginTextBox.Text;
+            password = passwordTextBox.Text;
             AccessRoles role;
 
             // работник отдела по работе с клиентами
