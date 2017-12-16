@@ -37,8 +37,8 @@
             // 
             // loginTextBox
             // 
-            this.loginTextBox.Location = new System.Drawing.Point(127, 47);
-            this.loginTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loginTextBox.Location = new System.Drawing.Point(44, 47);
+            this.loginTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(177, 20);
             this.loginTextBox.TabIndex = 0;
@@ -46,8 +46,8 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(127, 101);
-            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordTextBox.Location = new System.Drawing.Point(44, 101);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(177, 20);
@@ -57,7 +57,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(195, 26);
+            this.label1.Location = new System.Drawing.Point(119, 23);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
@@ -67,7 +67,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(195, 77);
+            this.label2.Location = new System.Drawing.Point(112, 79);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
@@ -76,8 +76,8 @@
             // 
             // enterButton
             // 
-            this.enterButton.Location = new System.Drawing.Point(181, 130);
-            this.enterButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.enterButton.Location = new System.Drawing.Point(101, 135);
+            this.enterButton.Margin = new System.Windows.Forms.Padding(2);
             this.enterButton.Name = "enterButton";
             this.enterButton.Size = new System.Drawing.Size(66, 32);
             this.enterButton.TabIndex = 4;
@@ -90,13 +90,13 @@
             this.AcceptButton = this.enterButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 178);
+            this.ClientSize = new System.Drawing.Size(269, 178);
             this.Controls.Add(this.enterButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.loginTextBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Authorization";
             this.Text = "Авторизация";
             this.ResumeLayout(false);

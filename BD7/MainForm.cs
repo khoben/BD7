@@ -54,6 +54,8 @@ namespace BD7
             InitializeComponent();
             _currentRole = role;
             _link = link;
+
+
         }
 
         /// <summary>
@@ -284,11 +286,6 @@ namespace BD7
             }
         }
 
-        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            UpdateEntry();
-        }
-
         private void добавитьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             // добавлять клиентов могут только директор и 
@@ -420,6 +417,15 @@ namespace BD7
             }
         }
 
+        private void ToogleRawEditSwitch(object sender, EventArgs e)
+        {
+            this.dataGridView.ReadOnly = !this.dataGridView.ReadOnly;
+        }
 
+
+        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateEntry();
+        }
     }
 }

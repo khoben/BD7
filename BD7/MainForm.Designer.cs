@@ -46,6 +46,8 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.LabelUsername = new System.Windows.Forms.Label();
+            this.RawEditLabel = new System.Windows.Forms.Label();
+            this.ToogleRawEditButton = new BD7.MyCheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -143,23 +145,24 @@
             this.dataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView.Size = new System.Drawing.Size(755, 200);
             this.dataGridView.TabIndex = 1;
-            this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
+            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             // 
             // queryInfoLabel
             // 
             this.queryInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.queryInfoLabel.Location = new System.Drawing.Point(8, 29);
-            this.queryInfoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.queryInfoLabel.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.queryInfoLabel.Name = "queryInfoLabel";
             this.queryInfoLabel.Size = new System.Drawing.Size(755, 23);
             this.queryInfoLabel.TabIndex = 2;
             this.queryInfoLabel.Text = "Не выполнено ни одного запроса";
-            this.queryInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.queryInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // searchPatternTextBox
             // 
@@ -221,11 +224,31 @@
             this.LabelUsername.TabIndex = 8;
             this.LabelUsername.Text = "label1";
             // 
+            // RawEditLabel
+            // 
+            this.RawEditLabel.AutoSize = true;
+            this.RawEditLabel.Location = new System.Drawing.Point(590, 35);
+            this.RawEditLabel.Name = "RawEditLabel";
+            this.RawEditLabel.Size = new System.Drawing.Size(133, 13);
+            this.RawEditLabel.TabIndex = 10;
+            this.RawEditLabel.Text = "Прямое редактирование";
+            // 
+            // ToogleRawEditButton
+            // 
+            this.ToogleRawEditButton.Location = new System.Drawing.Point(729, 34);
+            this.ToogleRawEditButton.Name = "ToogleRawEditButton";
+            this.ToogleRawEditButton.Padding = new System.Windows.Forms.Padding(6);
+            this.ToogleRawEditButton.Size = new System.Drawing.Size(32, 14);
+            this.ToogleRawEditButton.TabIndex = 9;
+            this.ToogleRawEditButton.CheckedChanged += new System.EventHandler(this.ToogleRawEditSwitch);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 322);
+            this.Controls.Add(this.RawEditLabel);
+            this.Controls.Add(this.ToogleRawEditButton);
             this.Controls.Add(this.LabelUsername);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.AddButton);
@@ -270,5 +293,7 @@
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
         private System.Windows.Forms.Label LabelUsername;
+        private MyCheckBox ToogleRawEditButton;
+        private System.Windows.Forms.Label RawEditLabel;
     }
 }
