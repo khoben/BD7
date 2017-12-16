@@ -48,6 +48,8 @@ namespace BD7
         //private delegate void CurrentFunction(object sender, EventArgs e);
         //private CurrentFunction _currFunc = null;
 
+        private bool itWasReplaceFKtoName = false;
+
 
         public MainForm(AccessRoles role, Authorization link)
         {
@@ -316,13 +318,27 @@ namespace BD7
                 }
                 );
 
-                _current_table = currentTable;
+                itWasReplaceFKtoName = true;
 
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    row.Cells["Клиент"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
+                    row.Cells["Квартира"].Value = Authorization.ODBC.getNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
+                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+
+                }
+
+                itWasReplaceFKtoName = false;
+
+                _current_table = currentTable;
             }
             catch (Exception ex)
             {
+                itWasReplaceFKtoName = false;
                 MessageBox.Show(ex.Message.ToString());
             }
+
+
         }
 
         public void EmployeesList()
@@ -468,7 +484,8 @@ namespace BD7
 
         private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            UpdateEntry();
+            if (!itWasReplaceFKtoName)
+                UpdateEntry();
         }
     }
 }

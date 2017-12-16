@@ -94,13 +94,45 @@ namespace BD7
             if (tableView != null)
             {
                 DataTable dataTable = new DataTable();
-                tableView.DataSource = dataTable;
-
                 adapter.Fill(dataTable);
+
+                //Сделаем все клетки типа string
+                DataTable dtStringed = dataTable.Clone();
+
+                foreach (DataColumn column in dtStringed.Columns)
+                {
+                    column.DataType = typeof(string);
+
+                }
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    dtStringed.ImportRow(row);
+                }
+
+                tableView.DataSource = dtStringed;
                 tableView.Columns["ID"].Visible = false;
             }
 
             return adapter;
+        }
+
+        public string getNameByFK(string what, string table, string id)
+        {
+            string selectString = String.Format("select {0} from {1} where \"ID\" = {2}", what, table, id);
+
+            NpgsqlCommand command = new NpgsqlCommand(selectString, _connection);
+            NpgsqlDataReader reader = command.ExecuteReader();
+            string ret = "";
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    ret = reader.GetString(0);
+                }
+            }
+            reader.Close();
+            return ret;
         }
 
 
