@@ -38,7 +38,6 @@
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.topLevelExit = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.queryInfoLabel = new System.Windows.Forms.Label();
             this.searchPatternTextBox = new System.Windows.Forms.TextBox();
@@ -62,8 +61,7 @@
             this.штрафыToolStripMenuItem,
             this.звонкиToolStripMenuItem,
             this.отчетыToolStripMenuItem,
-            this.настройкиToolStripMenuItem,
-            this.topLevelExit});
+            this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
@@ -133,13 +131,6 @@
             this.сменитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.сменитьПользователяToolStripMenuItem.Text = "Сменить пользователя";
             this.сменитьПользователяToolStripMenuItem.Click += new System.EventHandler(this.OnChangeUser);
-            // 
-            // topLevelExit
-            // 
-            this.topLevelExit.Name = "topLevelExit";
-            this.topLevelExit.Size = new System.Drawing.Size(53, 22);
-            this.topLevelExit.Text = "Выход";
-            this.topLevelExit.Click += new System.EventHandler(this.topLevelExit_Click);
             // 
             // dataGridView
             // 
@@ -224,7 +215,7 @@
             // LabelUsername
             // 
             this.LabelUsername.AutoSize = true;
-            this.LabelUsername.Location = new System.Drawing.Point(627, 29);
+            this.LabelUsername.Location = new System.Drawing.Point(619, 5);
             this.LabelUsername.Name = "LabelUsername";
             this.LabelUsername.Size = new System.Drawing.Size(35, 13);
             this.LabelUsername.TabIndex = 8;
@@ -249,6 +240,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "ОВО по охране квартир";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OnClose);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -273,7 +265,6 @@
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сменитьПользователяToolStripMenuItem;
         private System.Windows.Forms.Button deleteRowButton;
-        private System.Windows.Forms.ToolStripMenuItem topLevelExit;
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;

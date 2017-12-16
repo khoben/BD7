@@ -17,21 +17,23 @@ namespace BD7
     {
         // этот кусок кода нужен, чтобы убрать закрывающий крестик на форме
 
-        const int MF_BYPOSITION = 0x400;
-        [DllImport("User32")]
-        private static extern int RemoveMenu(IntPtr hMenu, int nPosition, int wFlags);
+        //const int MF_BYPOSITION = 0x400;
+        //[DllImport("User32")]
+        //private static extern int RemoveMenu(IntPtr hMenu, int nPosition, int wFlags);
 
-        [DllImport("User32")]
-        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+        //[DllImport("User32")]
+        //private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
 
-        [DllImport("User32")]
-        private static extern int GetMenuItemCount(IntPtr hWnd);
+        //[DllImport("User32")]
+        //private static extern int GetMenuItemCount(IntPtr hWnd);
+
+        private static bool itWasChangeUser = false;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            IntPtr hMenu = GetSystemMenu(Handle, false);
-            int menuItemCount = GetMenuItemCount(hMenu);
-            RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
+            //IntPtr hMenu = GetSystemMenu(Handle, false);
+            //int menuItemCount = GetMenuItemCount(hMenu);
+            //RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
 
             this.LabelUsername.Text = "Пользователь: " + Authorization.login;
 
@@ -70,16 +72,20 @@ namespace BD7
         }
 
         // при закрытии формы, также выходим из приложения
-        private void OnClose(object sender, EventArgs e)
+
+        private void OnClose(object sender, FormClosedEventArgs e)
         {
-            _link.Close();
+            if (!itWasChangeUser)
+                _link.Close();
         }
 
         // смена пользователя
         private void OnChangeUser(object sender, EventArgs e)
         {
+            itWasChangeUser = true;
             _link.Reset();
             Close();
+            itWasChangeUser = false;
         }
 
         private int GetSelectedRow()
@@ -387,7 +393,7 @@ namespace BD7
         }
 
 
-
+        //вызывает метод вида <tableName>List
         private void ChangeCurrentContext(object sender, EventArgs e)
         {
             this.queryInfoLabel.Text = sender.ToString();
@@ -398,7 +404,7 @@ namespace BD7
         }
 
 
-
+        //вызывает форму вида Add<formName>
         private void callFormFromCurrentContext(object sender, EventArgs e)
         {
             string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
@@ -413,5 +419,7 @@ namespace BD7
                 MessageBox.Show("Форма для данного контекста еще не задана");
             }
         }
+
+
     }
 }
