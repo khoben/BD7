@@ -305,7 +305,15 @@ namespace BD7
             {
                 string currentTable = "\"Contract\"";
                 Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: null
+                values: new Dictionary<string, string>()
+                {
+                    ["\"ID\""] = "\"ID\"",
+                    ["\"Date\""] = "\"Дата\"",
+                    ["\"ID_client\""] = "\"Клиент\"",
+                    ["\"Apartment_ID\""] = "\"Квартира\"",
+                    ["\"Subscription_fee\""] = "\"Цена договора\"",
+                    ["\"ID_employee_client\""] = "\"Сотрудник\""
+                }
                 );
 
                 _current_table = currentTable;
@@ -323,8 +331,16 @@ namespace BD7
             {
                 string currentTable = "\"Employee\"";
                 Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: null
+                values: new Dictionary<string, string>()
+                {
+                    ["\"ID\""] = "\"ID\"",
+                    ["\"Surname\""] = "\"Фамилия\"",
+                    ["\"Name\""] = "\"Имя\"",
+                    ["\"Otch\""] = "\"Отчество\"",
+                    ["\"ID_position\""] = "\"Должность\""
+                }
                 );
+
 
                 _current_table = currentTable;
 
@@ -341,7 +357,15 @@ namespace BD7
             {
                 string currentTable = "\"Payment\"";
                 Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: null
+                values: new Dictionary<string, string>()
+                {
+                    ["\"ID\""] = "\"ID\"",
+                    ["\"Payment_date\""] = "\"Дата\"",
+                    ["\"Payment_sum\""] = "\"Сумма\"",
+                    ["\"ID_invoice_type\""] = "\"Тип платежа\"",
+                    ["\"Contract_ID\""] = "\"Договор\"",
+                    ["\"ID_accountant\""] = "\"Сотрудник\""
+                }
                 );
 
                 _current_table = currentTable;
@@ -359,7 +383,15 @@ namespace BD7
             {
                 string currentTable = "\"Fine\"";
                 Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: null
+                values: new Dictionary<string, string>()
+                {
+                    ["\"ID\""] = "\"ID\"",
+                    ["\"Date\""] = "\"Дата\"",
+                    ["\"Sum\""] = "\"Сумма\"",
+                    ["\"Contract_ID\""] = "\"Договор\"",
+                    ["\"ID_type_fine\""] = "\"Тип\"",
+                    ["\"ID_accountant\""] = "\"Сотрудник\""
+                }
                 );
 
                 _current_table = currentTable;
@@ -377,7 +409,18 @@ namespace BD7
             {
                 string currentTable = "\"Call\"";
                 Authorization.ODBC.Select(currentTable, tableView: dataGridView,
-                values: null
+                values: new Dictionary<string, string>()
+                {
+                    ["\"ID\""] = "\"ID\"",
+                    ["\"Date\""] = "\"Дата\"",
+                    ["\"Call_time\""] = "\"Время\"",
+                    ["\"Arrival_time\""] = "\"Время прибытия экипажа\"",
+                    ["\"Is_false_call\""] = "\"Ложный вызов\"",
+                    ["\"Is_hacked\""] = "\"Был взлом\"",
+                    ["\"Contract_ID\""] = "\"Договор\"",
+                    ["\"ID_bossfight_thiscall\""] = "\"Начальник наряда\"",
+                    ["\"ID_dispatcher_thiscall\""] = "\"Диспетчер\""
+                }
                 );
 
                 _current_table = currentTable;
