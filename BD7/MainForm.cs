@@ -357,12 +357,22 @@ namespace BD7
                 }
                 );
 
+                itWasReplaceFKtoName = true;
+
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    row.Cells["Должность"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"Position\"", row.Cells["Должность"].Value.ToString());
+                }
+
+                itWasReplaceFKtoName = false;
+
 
                 _current_table = currentTable;
 
             }
             catch (Exception ex)
             {
+                itWasReplaceFKtoName = false;
                 MessageBox.Show(ex.Message.ToString());
             }
         }
@@ -383,6 +393,17 @@ namespace BD7
                     ["\"ID_accountant\""] = "\"Сотрудник\""
                 }
                 );
+
+                itWasReplaceFKtoName = true;
+
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    row.Cells["Тип платежа"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"InvoiceType\"", row.Cells["Тип платежа"].Value.ToString());
+                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                }
+
+                itWasReplaceFKtoName = false;
+
 
                 _current_table = currentTable;
 
@@ -409,6 +430,16 @@ namespace BD7
                     ["\"ID_accountant\""] = "\"Сотрудник\""
                 }
                 );
+
+                itWasReplaceFKtoName = true;
+
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    row.Cells["Тип"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"FineType\"", row.Cells["Тип"].Value.ToString());
+                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                }
+
+                itWasReplaceFKtoName = false;
 
                 _current_table = currentTable;
 
@@ -438,6 +469,22 @@ namespace BD7
                     ["\"ID_dispatcher_thiscall\""] = "\"Диспетчер\""
                 }
                 );
+
+                itWasReplaceFKtoName = true;
+
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    string idDisp = Authorization.ODBC.getNameByFK("\"ID_dispatcher\"", "\"DispatcherThisCall\"", row.Cells["Диспетчер"].Value.ToString());
+                    string idBoss = Authorization.ODBC.getNameByFK("\"ID_bossfight\"", "\"BossFightThisCall\"", row.Cells["Начальник наряда"].Value.ToString());
+
+                    row.Cells["Начальник наряда"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", idBoss);
+                    row.Cells["Диспетчер"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", idDisp);
+
+                    row.Cells["Был взлом"].Value = Config.TrueFalse[row.Cells["Был взлом"].Value.ToString()];
+                    row.Cells["Ложный вызов"].Value = Config.TrueFalse[row.Cells["Ложный вызов"].Value.ToString()];
+                }
+
+                itWasReplaceFKtoName = false;
 
                 _current_table = currentTable;
 

@@ -35,6 +35,13 @@ namespace BD7
             ["Штрафы"] = "Fines",
             ["Сигналы тревоги"] = "Calls"
         };
+
+        public static Dictionary<string, string> TrueFalse = new Dictionary<string, string>()
+        {
+            ["True"] = "Да",
+            ["False"] = "Нет"
+        };
+
     }
 
 }
