@@ -325,7 +325,6 @@ namespace BD7
                     row.Cells["Клиент"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
                     row.Cells["Квартира"].Value = Authorization.ODBC.getNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
                     row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
-
                 }
 
                 itWasReplaceFKtoName = false;
@@ -480,6 +479,9 @@ namespace BD7
                     row.Cells["Начальник наряда"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", idBoss);
                     row.Cells["Диспетчер"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", idDisp);
 
+                    row.Cells["Начальник наряда"].ReadOnly = true;
+                    row.Cells["Диспетчер"].ReadOnly = true;
+
                     row.Cells["Был взлом"].Value = Config.TrueFalse[row.Cells["Был взлом"].Value.ToString()];
                     row.Cells["Ложный вызов"].Value = Config.TrueFalse[row.Cells["Ложный вызов"].Value.ToString()];
                 }
@@ -533,6 +535,11 @@ namespace BD7
         {
             if (!itWasReplaceFKtoName)
                 UpdateEntry();
+        }
+
+        private void RawEditLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

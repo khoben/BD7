@@ -204,6 +204,11 @@ namespace BD7
             return newDict;
         }
 
+        private void SubMTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
         // Добавление договора
         private void AddButton_Click(object sender, EventArgs e)
         {

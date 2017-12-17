@@ -36,17 +36,20 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 40);
+            this.dataGridView.Location = new System.Drawing.Point(8, 26);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 28;
-            this.dataGridView.Size = new System.Drawing.Size(1047, 247);
+            this.dataGridView.Size = new System.Drawing.Size(698, 161);
             this.dataGridView.TabIndex = 0;
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(924, 313);
+            this.closeButton.Location = new System.Drawing.Point(616, 203);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(135, 34);
+            this.closeButton.Size = new System.Drawing.Size(90, 22);
             this.closeButton.TabIndex = 1;
             this.closeButton.Text = "Закрыть";
             this.closeButton.UseVisualStyleBackColor = true;
@@ -54,11 +57,12 @@
             // 
             // SearchResult
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 368);
+            this.ClientSize = new System.Drawing.Size(714, 239);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.dataGridView);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SearchResult";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Результаты поиска";

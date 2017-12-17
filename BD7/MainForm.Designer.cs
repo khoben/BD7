@@ -48,6 +48,7 @@
             this.LabelUsername = new System.Windows.Forms.Label();
             this.RawEditLabel = new System.Windows.Forms.Label();
             this.ToogleRawEditButton = new BD7.MyCheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -232,6 +233,7 @@
             this.RawEditLabel.Size = new System.Drawing.Size(133, 13);
             this.RawEditLabel.TabIndex = 10;
             this.RawEditLabel.Text = "Прямое редактирование";
+            this.RawEditLabel.Click += new System.EventHandler(this.RawEditLabel_Click);
             // 
             // ToogleRawEditButton
             // 
@@ -242,11 +244,22 @@
             this.ToogleRawEditButton.TabIndex = 9;
             this.ToogleRawEditButton.CheckedChanged += new System.EventHandler(this.ToogleRawEditSwitch);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(610, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 12);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "экспериментальная функция";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 322);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.RawEditLabel);
             this.Controls.Add(this.ToogleRawEditButton);
             this.Controls.Add(this.LabelUsername);
@@ -295,5 +308,6 @@
         private System.Windows.Forms.Label LabelUsername;
         private MyCheckBox ToogleRawEditButton;
         private System.Windows.Forms.Label RawEditLabel;
+        private System.Windows.Forms.Label label1;
     }
 }

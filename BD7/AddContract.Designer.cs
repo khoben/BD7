@@ -186,6 +186,7 @@
             this.SubMTextBox.Name = "SubMTextBox";
             this.SubMTextBox.Size = new System.Drawing.Size(100, 20);
             this.SubMTextBox.TabIndex = 18;
+            this.SubMTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.SubMTextBox_MaskInputRejected);
             // 
             // AddContract
             // 
