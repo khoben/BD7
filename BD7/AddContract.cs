@@ -17,11 +17,20 @@ namespace BD7
                           emplIDs = new List<int>(),
                           clientIDs = new List<int>();
 
+        private MainForm mainForm;
+
         public AddContract()
         {
             InitializeComponent();
+            FillForm();
+            
+        }
 
-
+        public AddContract(MainForm mainForm)
+        {
+            InitializeComponent();
+            FillForm();
+            this.mainForm = mainForm;
         }
 
         // Заполнение формы при старте
@@ -235,7 +244,10 @@ namespace BD7
             if ((FlatComboBox.SelectedIndex == -1) ||
                 (EmplComboBox.SelectedIndex == -1) ||
                 (ClientComboBox.SelectedIndex == -1))
+            {
+                MessageBox.Show("Не указаны одно или более обязательных полей");
                 return;
+            }
 
             Dictionary<string, string> vals = new Dictionary<string, string>()
             {
@@ -269,10 +281,14 @@ namespace BD7
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+                return;
             }
 
             MessageBox.Show("Договор добавлен.");
-
+            if (mainForm != null)
+            {
+                mainForm.ContractsList();
+            }
             this.Close();
         }
 

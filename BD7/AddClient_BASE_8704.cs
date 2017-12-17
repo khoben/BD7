@@ -12,17 +12,11 @@ namespace BD7
 {
     public partial class AddClient : Form
     {
-        private MainForm mainForm;
         public AddClient()
         {
             InitializeComponent();
-        }
 
-        public AddClient(MainForm form)
-        {
-            InitializeComponent();
             ClearForm();
-            mainForm = form;
         }
 
         private void ClearForm()
@@ -100,36 +94,17 @@ namespace BD7
 
             try
             {
-                if (Text == "Редактирование")
-                {
-                    Authorization.ODBC.Update("\"Client\"", Config.valueFromTableForEdit["ID"], vals);
-
-                    MessageBox.Show("Запись успешно обновлена.");
-                    this.Close();
-                    return;
-                }
-                else
-                {
-
-                    Authorization.ODBC.Insert("\"Client\"",
-                        vals
-                    );
-                    ClearForm();
-
-                }
+                Authorization.ODBC.Insert("\"Client\"",
+                    vals
+                );
+                ClearForm();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
-                return;
             }
 
             MessageBox.Show("Клиент добавлен.");
-            
-            if (mainForm != null)
-            {
-                mainForm.ClientsList();
-            }
 
             this.Close();
         }
@@ -137,25 +112,6 @@ namespace BD7
         private void CancelAdding(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void AddClient_Load(object sender, EventArgs e)
-        {
-            if (Text == "Редактирование")
-            {
-                this.addButton.Text = "Сохранить";
-
-                surnameTextBox.Text = Config.valueFromTableForEdit["Фамилия"];
-                nameTextBox.Text = Config.valueFromTableForEdit["Имя"];
-                otchTextBox.Text = Config.valueFromTableForEdit["Отчество"];
-                INNMTextBox.Text = Config.valueFromTableForEdit["ИНН"];
-                birthTextBox.Text = Config.valueFromTableForEdit["Дата рождения"];
-                addressTextBox.Text = Config.valueFromTableForEdit["Домашний адрес"];
-                IDMTextBox.Text = Config.valueFromTableForEdit["Паспорт"].Split(' ')[1];
-                SMTextBox.Text = Config.valueFromTableForEdit["Паспорт"].Split(' ')[0];
-            }
-            else
-                ClearForm();
         }
     }
 }
