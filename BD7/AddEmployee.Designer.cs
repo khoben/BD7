@@ -152,6 +152,7 @@
             this.Controls.Add(this.addButton);
             this.Name = "AddEmployee";
             this.Text = "Добавить сотрудника";
+            this.Load += new System.EventHandler(this.AddEmployee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

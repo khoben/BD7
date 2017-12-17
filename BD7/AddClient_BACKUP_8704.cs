@@ -125,11 +125,15 @@ namespace BD7
             }
 
             MessageBox.Show("Клиент добавлен.");
-            
+
+<<<<<<< HEAD
             if (mainForm != null)
             {
                 mainForm.ClientsList();
             }
+=======
+
+>>>>>>> 436db3fdb2d3ff6ed8927148acb106a1721219c4
 
             this.Close();
         }

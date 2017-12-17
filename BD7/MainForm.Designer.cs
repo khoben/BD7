@@ -47,8 +47,9 @@
             this.EditButton = new System.Windows.Forms.Button();
             this.LabelUsername = new System.Windows.Forms.Label();
             this.RawEditLabel = new System.Windows.Forms.Label();
-            this.ToogleRawEditButton = new BD7.MyCheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ToogleRawEditButton = new BD7.MyCheckBox();
+            this.UpdateButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +68,7 @@
             this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1156, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1224, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -212,6 +213,7 @@
             this.EditButton.TabIndex = 7;
             this.EditButton.Text = "Изменить";
             this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // LabelUsername
             // 
@@ -232,17 +234,6 @@
             this.RawEditLabel.Size = new System.Drawing.Size(199, 20);
             this.RawEditLabel.TabIndex = 10;
             this.RawEditLabel.Text = "Прямое редактирование";
-            this.RawEditLabel.Click += new System.EventHandler(this.RawEditLabel_Click);
-            // 
-            // ToogleRawEditButton
-            // 
-            this.ToogleRawEditButton.Location = new System.Drawing.Point(1094, 52);
-            this.ToogleRawEditButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ToogleRawEditButton.Name = "ToogleRawEditButton";
-            this.ToogleRawEditButton.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
-            this.ToogleRawEditButton.Size = new System.Drawing.Size(48, 22);
-            this.ToogleRawEditButton.TabIndex = 9;
-            this.ToogleRawEditButton.CheckedChanged += new System.EventHandler(this.ToogleRawEditSwitch);
             // 
             // label1
             // 
@@ -255,11 +246,32 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "экспериментальная функция";
             // 
+            // ToogleRawEditButton
+            // 
+            this.ToogleRawEditButton.Location = new System.Drawing.Point(1094, 52);
+            this.ToogleRawEditButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ToogleRawEditButton.Name = "ToogleRawEditButton";
+            this.ToogleRawEditButton.Padding = new System.Windows.Forms.Padding(9);
+            this.ToogleRawEditButton.Size = new System.Drawing.Size(48, 22);
+            this.ToogleRawEditButton.TabIndex = 9;
+            this.ToogleRawEditButton.CheckedChanged += new System.EventHandler(this.ToogleRawEditSwitch);
+            // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Location = new System.Drawing.Point(362, 31);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.UpdateButton.TabIndex = 12;
+            this.UpdateButton.Text = "Обновить";
+            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1156, 495);
+            this.ClientSize = new System.Drawing.Size(1224, 529);
+            this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RawEditLabel);
             this.Controls.Add(this.ToogleRawEditButton);
@@ -309,5 +321,6 @@
         private MyCheckBox ToogleRawEditButton;
         private System.Windows.Forms.Label RawEditLabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button UpdateButton;
     }
 }

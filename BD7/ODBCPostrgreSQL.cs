@@ -187,6 +187,18 @@ namespace BD7
             //"Update <table> set <what>=<value>, ... where ID=<idEntry>;
             string updateString = "update " + table + " set ";
 
+
+            //На вход могут быть поданы строки с кавычками
+            for (int i = 0; i < name.Count; i++)
+            {
+                if (name[i][0] == '\"')
+                {
+                    name[i] = name[i].Substring(1, name[i].Length - 2);
+                }
+                else
+                    break;
+            }
+
             if (value == null || name == null)
                 return;
 
@@ -214,6 +226,50 @@ namespace BD7
 
             updateString = updateString.Substring(0, updateString.Length - 2);
             updateString += String.Format(" where \"ID\" = {0}", idEntry);
+
+            NpgsqlCommand command = new NpgsqlCommand(updateString, _connection);
+            command.ExecuteNonQuery();
+
+        }
+
+
+
+        public void Update(string table, string idEntry, Dictionary<string, string> dict)
+        {
+            //"Update <table> set <what>=<value>, ... where ID=<idEntry>;
+            string updateString = "update " + table + " set ";
+
+            if (dict == null)
+                return;
+
+            //На вход могут быть поданы строки с кавычками
+
+            foreach (var k in dict.Keys)
+            {
+                if (k == "" || dict[k] == "ID")
+                    continue;
+                if (k.Split('_')[0] == "Date")
+                {
+
+                    DateTime date = DateTime.ParseExact(dict[k], "dd.MM.yyyy H:mm:ss",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+                    dict[k] = date.ToString("yyyy-MM-dd HH:mm:ss");
+
+                }
+                //Клеим паспорт
+                if (dict[k] == "Passport")
+                {
+                    updateString += "\"Passport_series\" = '" + dict[k].Split(' ')[0] + "' ,";
+                    updateString += "\"Passport_ID\" = '" + dict[k].Split(' ')[1] + "' ,";
+                    continue;
+                }
+                updateString += k + " = " + dict[k] + " ,";
+            }
+
+            updateString = updateString.Substring(0, updateString.Length - 2);
+            updateString += String.Format(" where \"ID\" = {0}", idEntry);
+
+            //MessageBox.Show(updateString);
 
             NpgsqlCommand command = new NpgsqlCommand(updateString, _connection);
             command.ExecuteNonQuery();

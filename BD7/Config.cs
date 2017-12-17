@@ -42,6 +42,8 @@ namespace BD7
             ["False"] = "Нет"
         };
 
+        public static Dictionary<string, string> valueFromTableForEdit = new Dictionary<string, string>();
+
     }
 
 }

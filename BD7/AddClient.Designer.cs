@@ -253,6 +253,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddClient";
             this.Text = "Добавить клиента";
+            this.Load += new System.EventHandler(this.AddClient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

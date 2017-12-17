@@ -182,7 +182,6 @@
             // SubMTextBox
             // 
             this.SubMTextBox.Location = new System.Drawing.Point(132, 32);
-            this.SubMTextBox.Mask = "$999999999.00";
             this.SubMTextBox.Name = "SubMTextBox";
             this.SubMTextBox.Size = new System.Drawing.Size(100, 20);
             this.SubMTextBox.TabIndex = 18;
@@ -210,6 +209,7 @@
             this.Controls.Add(this.AddButton);
             this.Name = "AddContract";
             this.Text = "Добавить договор";
+            this.Load += new System.EventHandler(this.AddContract_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
