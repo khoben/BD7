@@ -118,6 +118,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
 
+            MessageBox.Show("Сотрудник добавлен.");
             this.Close();
         }
 

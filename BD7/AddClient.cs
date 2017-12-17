@@ -104,6 +104,8 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
 
+            MessageBox.Show("Клиент добавлен.");
+
             this.Close();
         }
 

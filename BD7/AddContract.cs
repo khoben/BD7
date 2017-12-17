@@ -13,7 +13,7 @@ namespace BD7
     public partial class AddContract : Form
     {
         // Храним ИД внешних записей
-        private List<int> flatIDs = new List<int>(), 
+        private List<int> flatIDs = new List<int>(),
                           emplIDs = new List<int>(),
                           clientIDs = new List<int>();
 
@@ -52,7 +52,7 @@ namespace BD7
             try
             {
                 currentTable = "\"Apartment\"";
-                var adapter = Authorization.ODBC.Select(currentTable, 
+                var adapter = Authorization.ODBC.Select(currentTable,
                                                         new Dictionary<string, string>()
                                                         {
                                                             ["\"ID\""] = "ID",
@@ -189,7 +189,7 @@ namespace BD7
                 if (key.ToLower().Contains("date"))
                 {
                     newDict.Add(key, ConvertToDateDB(vals[key]));
-                    
+
                 }
                 else if (key.ToLower().Contains("subscription_fee"))
                 {
@@ -234,6 +234,8 @@ namespace BD7
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+
+            MessageBox.Show("Договор добавлен.");
 
             this.Close();
         }

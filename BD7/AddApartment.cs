@@ -77,6 +77,8 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
 
+            MessageBox.Show("Квартира добавлена.");
+
             this.Close();
         }
 
