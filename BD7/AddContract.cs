@@ -158,7 +158,7 @@ namespace BD7
 
         private string ConvertFromRoubleToDoubleDB(string text)
         {
-            text = text.Substring(1);
+            //text = text.Substring(1);
             text = text.Replace(',', '.');
             return text;
         }

@@ -216,7 +216,7 @@ namespace BD7
 
         }
 
-        private void DeleteClient(object sendet, EventArgs e)
+        private void DeleteEntry(object sendet, EventArgs e)
         {
             if (CheckNoAccess())
                 return;
@@ -335,6 +335,10 @@ namespace BD7
                     ["\"ID_employee_client\""] = "\"Сотрудник\""
                 }
                 );
+
+                //Для договора можно оставить первичный ключ
+
+                dataGridView.Columns["ID"].Visible = true;
 
                 itWasReplaceFKtoName = true;
 

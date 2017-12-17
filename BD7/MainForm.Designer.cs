@@ -196,7 +196,7 @@
             this.deleteRowButton.TabIndex = 5;
             this.deleteRowButton.Text = "Удалить";
             this.deleteRowButton.UseVisualStyleBackColor = true;
-            this.deleteRowButton.Click += new System.EventHandler(this.DeleteClient);
+            this.deleteRowButton.Click += new System.EventHandler(this.DeleteEntry);
             // 
             // AddButton
             // 
