@@ -12,9 +12,18 @@ namespace BD7
 {
     public partial class AddCall : Form
     {
+        private MainForm mainForm;
+
         public AddCall()
         {
             InitializeComponent();
+            
+        }
+
+        public AddCall(MainForm mainForm)
+        {
+            InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
