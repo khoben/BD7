@@ -21,7 +21,7 @@ namespace BD7
         {
             InitializeComponent();
 
-            FillForm();
+
         }
 
         // Заполнение формы при старте
@@ -209,6 +209,25 @@ namespace BD7
 
         }
 
+        private void AddContract_Load(object sender, EventArgs e)
+        {
+            if (Text == "Редактирование")
+            {
+                this.AddButton.Text = "Сохранить";
+
+                DateMTextBox.Text = Config.valueFromTableForEdit["Дата"];
+                SubMTextBox.Text = Config.valueFromTableForEdit["Цена договора"];
+
+                updateComboBoxies();
+
+                FlatComboBox.SelectedIndex = FlatComboBox.FindStringExact(Config.valueFromTableForEdit["Квартира"]);
+                EmplComboBox.SelectedIndex = EmplComboBox.FindStringExact(Config.valueFromTableForEdit["Сотрудник"]);
+                ClientComboBox.SelectedIndex = ClientComboBox.FindStringExact(Config.valueFromTableForEdit["Клиент"]);
+            }
+            else
+                FillForm();
+        }
+
         // Добавление договора
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -231,9 +250,21 @@ namespace BD7
 
             try
             {
-                Authorization.ODBC.Insert("\"Contract\"",
-                    vals
-                );
+                if (Text == "Редактирование")
+                {
+                    Authorization.ODBC.Update("\"Contract\"", Config.valueFromTableForEdit["ID"], vals);
+
+                    MessageBox.Show("Договор успешно обновлен.");
+                    this.Close();
+                    return;
+                }
+                else
+                {
+
+                    Authorization.ODBC.Insert("\"Contract\"",
+                        vals
+                    );
+                }
             }
             catch (Exception ex)
             {

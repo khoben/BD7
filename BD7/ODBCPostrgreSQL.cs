@@ -269,6 +269,8 @@ namespace BD7
             updateString = updateString.Substring(0, updateString.Length - 2);
             updateString += String.Format(" where \"ID\" = {0}", idEntry);
 
+            //MessageBox.Show(updateString);
+
             NpgsqlCommand command = new NpgsqlCommand(updateString, _connection);
             command.ExecuteNonQuery();
 
