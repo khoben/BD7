@@ -10,7 +10,7 @@ namespace BD7
     {
 
         private static ODBCPostrgreSQL instance = null;
-        private NpgsqlConnection _connection;
+        public readonly NpgsqlConnection _connection;
 
         public static ODBCPostrgreSQL CreateODBCPostgreSQL(string host, string port, string username,
             string password, string database, string sslMode = "Require",
