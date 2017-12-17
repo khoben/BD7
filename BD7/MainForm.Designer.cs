@@ -248,10 +248,10 @@
             // 
             // UpdateButton
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(356, 29);
+            this.UpdateButton.Location = new System.Drawing.Point(365, 30);
             this.UpdateButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(66, 23);
+            this.UpdateButton.Size = new System.Drawing.Size(69, 26);
             this.UpdateButton.TabIndex = 12;
             this.UpdateButton.Text = "Обновить";
             this.UpdateButton.UseVisualStyleBackColor = true;

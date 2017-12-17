@@ -266,7 +266,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
                 return;
             }
-            
+
         }
 
         private void topLevelExit_Click(object sender, EventArgs e)
@@ -375,6 +375,7 @@ namespace BD7
                     row.Cells["Клиент"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
                     row.Cells["Квартира"].Value = Authorization.ODBC.getNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
                     row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                    row.Cells["Цена договора"].Value = Convert.ToDouble(row.Cells["Цена договора"].Value.ToString()).ToString();
                 }
 
                 itWasReplaceFKtoName = false;
