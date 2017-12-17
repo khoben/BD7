@@ -49,13 +49,14 @@ namespace BD7
         //private CurrentFunction _currFunc = null;
 
         private bool itWasReplaceFKtoName = false;
+        List<string> itemsForAutoComplete;
 
         public MainForm(AccessRoles role, Authorization link)
         {
             InitializeComponent();
             _currentRole = role;
             _link = link;
-
+            itemsForAutoComplete = new List<string>();
 
         }
 
@@ -191,6 +192,9 @@ namespace BD7
 
                 _current_table = "\"Client\"";
 
+
+                FillValuesToAutocomplete();
+
             }
             catch (Exception ex)
             {
@@ -307,6 +311,24 @@ namespace BD7
             return names;
         }
 
+        private void FillValuesToAutocomplete()
+        {
+            itemsForAutoComplete.Clear();
+
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    itemsForAutoComplete.Add(cell.Value.ToString());
+                }
+            }
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(itemsForAutoComplete.ToArray());
+
+            this.searchPatternTextBox.AutoCompleteCustomSource = collection;
+        }
+
         //Обновление записи в таблице через DataGridView
 
         private void UpdateEntry()
@@ -386,6 +408,8 @@ namespace BD7
                 itWasReplaceFKtoName = false;
 
                 _current_table = currentTable;
+
+                FillValuesToAutocomplete();
             }
             catch (Exception ex)
             {
@@ -424,6 +448,7 @@ namespace BD7
 
                 _current_table = currentTable;
 
+                FillValuesToAutocomplete();
             }
             catch (Exception ex)
             {
@@ -462,6 +487,7 @@ namespace BD7
 
                 _current_table = currentTable;
 
+                FillValuesToAutocomplete();
             }
             catch (Exception ex)
             {
@@ -497,6 +523,9 @@ namespace BD7
                 itWasReplaceFKtoName = false;
 
                 _current_table = currentTable;
+
+                FillValuesToAutocomplete();
+
 
             }
             catch (Exception ex)
@@ -543,6 +572,8 @@ namespace BD7
                 itWasReplaceFKtoName = false;
 
                 _current_table = currentTable;
+
+                FillValuesToAutocomplete();
 
             }
             catch (Exception ex)
