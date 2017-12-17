@@ -19,7 +19,7 @@ namespace BD7
         {
             InitializeComponent();
 
-            FillForm();
+
         }
 
         // Заполнение формы при старте
@@ -109,9 +109,20 @@ namespace BD7
 
             try
             {
-                Authorization.ODBC.Insert("\"Employee\"",
-                    vals
-                );
+                if (Text == "Редактирование")
+                {
+                    Authorization.ODBC.Update("\"Employee\"", Config.valueFromTableForEdit["ID"], vals);
+
+                    MessageBox.Show("Карточка сотрудника была обновлена.");
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    Authorization.ODBC.Insert("\"Employee\"",
+                        vals
+                    );
+                }
             }
             catch (Exception ex)
             {
@@ -125,6 +136,23 @@ namespace BD7
         private void сancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AddEmployee_Load(object sender, EventArgs e)
+        {
+            if (Text == "Редактирование")
+            {
+                updateComboBoxies();
+
+                this.addButton.Text = "Сохранить";
+
+                surnameTextBox.Text = Config.valueFromTableForEdit["Фамилия"];
+                nameTextBox.Text = Config.valueFromTableForEdit["Имя"];
+                otchTextBox.Text = Config.valueFromTableForEdit["Отчество"];
+                PosComboBox.SelectedIndex = PosComboBox.FindStringExact(Config.valueFromTableForEdit["Должность"]);
+            }
+            else
+                FillForm();
         }
     }
 }
