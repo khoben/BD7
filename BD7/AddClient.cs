@@ -15,6 +15,8 @@ namespace BD7
         public AddClient()
         {
             InitializeComponent();
+
+            ClearForm();
         }
 
         private void ClearForm()
@@ -22,11 +24,11 @@ namespace BD7
             surnameTextBox.Text = "";
             nameTextBox.Text = "";
             otchTextBox.Text = "";
-            passportIDTextBox.Text = "";
-            passportSeriesTextBox.Text = "";
-            innTextBox.Text = "";
-            birthTextBox.Text = "";
+            INNMTextBox.Text = "000000000000";
+            birthTextBox.Text = "01.01.2000";
             addressTextBox.Text = "";
+            IDMTextBox.Text = "000000";
+            SMTextBox.Text = "0000";
         }
 
         private string ConvertToStringDB(string text)
@@ -81,11 +83,11 @@ namespace BD7
                 ["\"Surname\""] = surnameTextBox.Text,
                 ["\"Name\""] = nameTextBox.Text,
                 ["\"Otch\""] = otchTextBox.Text,
-                ["\"Passport_series\""] = passportSeriesTextBox.Text,
-                ["\"Passport_ID\""] = passportIDTextBox.Text,
+                ["\"Passport_series\""] = SMTextBox.Text,
+                ["\"Passport_ID\""] = IDMTextBox.Text,
                 ["\"Date_of_Birth\""] = birthTextBox.Text,
                 ["\"Home_address\""] = addressTextBox.Text,
-                ["\"INN\""] = innTextBox.Text
+                ["\"INN\""] = INNMTextBox.Text
             };
 
             vals = PrepareData(vals);
@@ -101,14 +103,13 @@ namespace BD7
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+
+            this.Close();
         }
 
         private void CancelAdding(object sender, EventArgs e)
         {
-            ClearForm();
             this.Close();
         }
-
-
     }
 }

@@ -29,43 +29,46 @@
         private void InitializeComponent()
         {
             this.AddButton = new System.Windows.Forms.Button();
-            this.сancelButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.DateLabel = new System.Windows.Forms.Label();
             this.SubcriptionLabel = new System.Windows.Forms.Label();
             this.FlatLabel = new System.Windows.Forms.Label();
             this.EmployeeLabel = new System.Windows.Forms.Label();
-            this.ClientTextBox = new System.Windows.Forms.TextBox();
-            this.SubTextBox = new System.Windows.Forms.TextBox();
-            this.FlatTextBox = new System.Windows.Forms.TextBox();
-            this.EmployeeTextBox = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.DateMTextBox = new System.Windows.Forms.MaskedTextBox();
             this.ClientLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.AddFlatButton = new System.Windows.Forms.Button();
+            this.AddEmplButton = new System.Windows.Forms.Button();
+            this.FlatComboBox = new System.Windows.Forms.ComboBox();
+            this.EmplComboBox = new System.Windows.Forms.ComboBox();
+            this.ClientComboBox = new System.Windows.Forms.ComboBox();
+            this.AddClientButton = new System.Windows.Forms.Button();
+            this.SubMTextBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(176, 247);
+            this.AddButton.Location = new System.Drawing.Point(132, 182);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(83, 33);
+            this.AddButton.Size = new System.Drawing.Size(80, 33);
             this.AddButton.TabIndex = 0;
             this.AddButton.Text = "Добавить";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // сancelButton
+            // CancelButton
             // 
-            this.сancelButton.Location = new System.Drawing.Point(296, 245);
-            this.сancelButton.Name = "сancelButton";
-            this.сancelButton.Size = new System.Drawing.Size(80, 35);
-            this.сancelButton.TabIndex = 1;
-            this.сancelButton.Text = "Отмена";
-            this.сancelButton.UseVisualStyleBackColor = true;
-            this.сancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelButton.Location = new System.Drawing.Point(221, 182);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(80, 33);
+            this.CancelButton.TabIndex = 1;
+            this.CancelButton.Text = "Отмена";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // DateLabel
             // 
             this.DateLabel.AutoSize = true;
-            this.DateLabel.Location = new System.Drawing.Point(29, 35);
+            this.DateLabel.Location = new System.Drawing.Point(29, 9);
             this.DateLabel.Name = "DateLabel";
             this.DateLabel.Size = new System.Drawing.Size(97, 13);
             this.DateLabel.TabIndex = 2;
@@ -74,7 +77,7 @@
             // SubcriptionLabel
             // 
             this.SubcriptionLabel.AutoSize = true;
-            this.SubcriptionLabel.Location = new System.Drawing.Point(12, 62);
+            this.SubcriptionLabel.Location = new System.Drawing.Point(12, 36);
             this.SubcriptionLabel.Name = "SubcriptionLabel";
             this.SubcriptionLabel.Size = new System.Drawing.Size(115, 13);
             this.SubcriptionLabel.TabIndex = 3;
@@ -83,7 +86,7 @@
             // FlatLabel
             // 
             this.FlatLabel.AutoSize = true;
-            this.FlatLabel.Location = new System.Drawing.Point(76, 95);
+            this.FlatLabel.Location = new System.Drawing.Point(71, 88);
             this.FlatLabel.Name = "FlatLabel";
             this.FlatLabel.Size = new System.Drawing.Size(55, 13);
             this.FlatLabel.TabIndex = 4;
@@ -92,87 +95,120 @@
             // EmployeeLabel
             // 
             this.EmployeeLabel.AutoSize = true;
-            this.EmployeeLabel.Location = new System.Drawing.Point(29, 130);
+            this.EmployeeLabel.Location = new System.Drawing.Point(67, 114);
             this.EmployeeLabel.Name = "EmployeeLabel";
             this.EmployeeLabel.Size = new System.Drawing.Size(60, 13);
             this.EmployeeLabel.TabIndex = 5;
             this.EmployeeLabel.Text = "Сотрудник";
             // 
-            // ClientTextBox
+            // DateMTextBox
             // 
-            this.ClientTextBox.Location = new System.Drawing.Point(132, 170);
-            this.ClientTextBox.Name = "ClientTextBox";
-            this.ClientTextBox.Size = new System.Drawing.Size(168, 20);
-            this.ClientTextBox.TabIndex = 6;
-            // 
-            // SubTextBox
-            // 
-            this.SubTextBox.Location = new System.Drawing.Point(132, 59);
-            this.SubTextBox.Name = "SubTextBox";
-            this.SubTextBox.Size = new System.Drawing.Size(100, 20);
-            this.SubTextBox.TabIndex = 7;
-            // 
-            // FlatTextBox
-            // 
-            this.FlatTextBox.Location = new System.Drawing.Point(132, 92);
-            this.FlatTextBox.Name = "FlatTextBox";
-            this.FlatTextBox.Size = new System.Drawing.Size(211, 20);
-            this.FlatTextBox.TabIndex = 8;
-            // 
-            // EmployeeTextBox
-            // 
-            this.EmployeeTextBox.Location = new System.Drawing.Point(132, 130);
-            this.EmployeeTextBox.Name = "EmployeeTextBox";
-            this.EmployeeTextBox.Size = new System.Drawing.Size(168, 20);
-            this.EmployeeTextBox.TabIndex = 9;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(132, 32);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 10;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.DateMTextBox.Location = new System.Drawing.Point(132, 6);
+            this.DateMTextBox.Mask = "00/00/0000";
+            this.DateMTextBox.Name = "DateMTextBox";
+            this.DateMTextBox.Size = new System.Drawing.Size(100, 20);
+            this.DateMTextBox.TabIndex = 10;
+            this.DateMTextBox.ValidatingType = typeof(System.DateTime);
             // 
             // ClientLabel
             // 
             this.ClientLabel.AutoSize = true;
-            this.ClientLabel.Location = new System.Drawing.Point(46, 177);
+            this.ClientLabel.Location = new System.Drawing.Point(84, 140);
             this.ClientLabel.Name = "ClientLabel";
             this.ClientLabel.Size = new System.Drawing.Size(43, 13);
             this.ClientLabel.TabIndex = 11;
             this.ClientLabel.Text = "Клиент";
             // 
-            // label1
+            // AddFlatButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 214);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(360, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Сотруднику, клиенту и квартире нужно по идее combobox для выбора";
+            this.AddFlatButton.Location = new System.Drawing.Point(306, 82);
+            this.AddFlatButton.Name = "AddFlatButton";
+            this.AddFlatButton.Size = new System.Drawing.Size(156, 23);
+            this.AddFlatButton.TabIndex = 12;
+            this.AddFlatButton.Text = "Добавить квартиру";
+            this.AddFlatButton.UseVisualStyleBackColor = true;
+            this.AddFlatButton.Click += new System.EventHandler(this.AddFlatButton_Click);
+            // 
+            // AddEmplButton
+            // 
+            this.AddEmplButton.Location = new System.Drawing.Point(306, 109);
+            this.AddEmplButton.Name = "AddEmplButton";
+            this.AddEmplButton.Size = new System.Drawing.Size(156, 23);
+            this.AddEmplButton.TabIndex = 13;
+            this.AddEmplButton.Text = "Добавить сотрудника";
+            this.AddEmplButton.UseVisualStyleBackColor = true;
+            this.AddEmplButton.Click += new System.EventHandler(this.AddEmplButton_Click);
+            // 
+            // FlatComboBox
+            // 
+            this.FlatComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.FlatComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.FlatComboBox.FormattingEnabled = true;
+            this.FlatComboBox.Location = new System.Drawing.Point(132, 83);
+            this.FlatComboBox.Name = "FlatComboBox";
+            this.FlatComboBox.Size = new System.Drawing.Size(168, 21);
+            this.FlatComboBox.TabIndex = 14;
+            // 
+            // EmplComboBox
+            // 
+            this.EmplComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.EmplComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.EmplComboBox.FormattingEnabled = true;
+            this.EmplComboBox.Location = new System.Drawing.Point(132, 110);
+            this.EmplComboBox.Name = "EmplComboBox";
+            this.EmplComboBox.Size = new System.Drawing.Size(168, 21);
+            this.EmplComboBox.TabIndex = 15;
+            // 
+            // ClientComboBox
+            // 
+            this.ClientComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ClientComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ClientComboBox.FormattingEnabled = true;
+            this.ClientComboBox.Location = new System.Drawing.Point(132, 137);
+            this.ClientComboBox.Name = "ClientComboBox";
+            this.ClientComboBox.Size = new System.Drawing.Size(168, 21);
+            this.ClientComboBox.TabIndex = 16;
+            // 
+            // AddClientButton
+            // 
+            this.AddClientButton.Location = new System.Drawing.Point(306, 136);
+            this.AddClientButton.Name = "AddClientButton";
+            this.AddClientButton.Size = new System.Drawing.Size(156, 23);
+            this.AddClientButton.TabIndex = 17;
+            this.AddClientButton.Text = "Добавить клиента";
+            this.AddClientButton.UseVisualStyleBackColor = true;
+            this.AddClientButton.Click += new System.EventHandler(this.AddClientButton_Click);
+            // 
+            // SubMTextBox
+            // 
+            this.SubMTextBox.Location = new System.Drawing.Point(132, 32);
+            this.SubMTextBox.Mask = "$999999999.00";
+            this.SubMTextBox.Name = "SubMTextBox";
+            this.SubMTextBox.Size = new System.Drawing.Size(100, 20);
+            this.SubMTextBox.TabIndex = 18;
             // 
             // AddContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 328);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(480, 234);
+            this.Controls.Add(this.SubMTextBox);
+            this.Controls.Add(this.AddClientButton);
+            this.Controls.Add(this.ClientComboBox);
+            this.Controls.Add(this.EmplComboBox);
+            this.Controls.Add(this.FlatComboBox);
+            this.Controls.Add(this.AddEmplButton);
+            this.Controls.Add(this.AddFlatButton);
             this.Controls.Add(this.ClientLabel);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.EmployeeTextBox);
-            this.Controls.Add(this.FlatTextBox);
-            this.Controls.Add(this.SubTextBox);
-            this.Controls.Add(this.ClientTextBox);
+            this.Controls.Add(this.DateMTextBox);
             this.Controls.Add(this.EmployeeLabel);
             this.Controls.Add(this.FlatLabel);
             this.Controls.Add(this.SubcriptionLabel);
             this.Controls.Add(this.DateLabel);
-            this.Controls.Add(this.сancelButton);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AddButton);
             this.Name = "AddContract";
-            this.Text = "AddContract";
+            this.Text = "Добавить договор";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,17 +217,19 @@
         #endregion
 
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button сancelButton;
+        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.Label SubcriptionLabel;
         private System.Windows.Forms.Label FlatLabel;
         private System.Windows.Forms.Label EmployeeLabel;
-        private System.Windows.Forms.TextBox ClientTextBox;
-        private System.Windows.Forms.TextBox SubTextBox;
-        private System.Windows.Forms.TextBox FlatTextBox;
-        private System.Windows.Forms.TextBox EmployeeTextBox;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox DateMTextBox;
         private System.Windows.Forms.Label ClientLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button AddFlatButton;
+        private System.Windows.Forms.Button AddEmplButton;
+        private System.Windows.Forms.ComboBox FlatComboBox;
+        private System.Windows.Forms.ComboBox EmplComboBox;
+        private System.Windows.Forms.ComboBox ClientComboBox;
+        private System.Windows.Forms.Button AddClientButton;
+        private System.Windows.Forms.MaskedTextBox SubMTextBox;
     }
 }

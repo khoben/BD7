@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessRoles.cs" />
+    <Compile Include="AddApartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddApartment.Designer.cs">
+      <DependentUpon>AddApartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,12 @@
     </Compile>
     <Compile Include="AddContract.Designer.cs">
       <DependentUpon>AddContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEmployee.Designer.cs">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
@@ -91,11 +103,17 @@
     <Compile Include="SearchResult.Designer.cs">
       <DependentUpon>SearchResult.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddApartment.resx">
+      <DependentUpon>AddApartment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddContract.resx">
       <DependentUpon>AddContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddEmployee.resx">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
