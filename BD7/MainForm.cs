@@ -322,9 +322,9 @@ namespace BD7
 
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    row.Cells["Клиент"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
+                    row.Cells["Клиент"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
                     row.Cells["Квартира"].Value = Authorization.ODBC.getNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
-                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
 
                 }
 
@@ -399,7 +399,7 @@ namespace BD7
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     row.Cells["Тип платежа"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"InvoiceType\"", row.Cells["Тип платежа"].Value.ToString());
-                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
                 }
 
                 itWasReplaceFKtoName = false;
@@ -436,7 +436,7 @@ namespace BD7
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     row.Cells["Тип"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"FineType\"", row.Cells["Тип"].Value.ToString());
-                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                    row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
                 }
 
                 itWasReplaceFKtoName = false;
@@ -477,8 +477,8 @@ namespace BD7
                     string idDisp = Authorization.ODBC.getNameByFK("\"ID_dispatcher\"", "\"DispatcherThisCall\"", row.Cells["Диспетчер"].Value.ToString());
                     string idBoss = Authorization.ODBC.getNameByFK("\"ID_bossfight\"", "\"BossFightThisCall\"", row.Cells["Начальник наряда"].Value.ToString());
 
-                    row.Cells["Начальник наряда"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", idBoss);
-                    row.Cells["Диспетчер"].Value = Authorization.ODBC.getNameByFK("\"Surname\"", "\"Employee\"", idDisp);
+                    row.Cells["Начальник наряда"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", idBoss);
+                    row.Cells["Диспетчер"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", idDisp);
 
                     row.Cells["Был взлом"].Value = Config.TrueFalse[row.Cells["Был взлом"].Value.ToString()];
                     row.Cells["Ложный вызов"].Value = Config.TrueFalse[row.Cells["Ложный вызов"].Value.ToString()];
