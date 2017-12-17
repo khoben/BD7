@@ -43,6 +43,9 @@
             this.AddEmplButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
+            this.ContractComboBox = new System.Windows.Forms.ComboBox();
+            this.ContractLabel = new System.Windows.Forms.Label();
+            this.AddContractButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DateMTextBox
@@ -119,11 +122,12 @@
             this.IsHackedCheckBox.TabIndex = 18;
             this.IsHackedCheckBox.Text = "Был взлом";
             this.IsHackedCheckBox.UseVisualStyleBackColor = true;
+            this.IsHackedCheckBox.CheckedChanged += new System.EventHandler(this.IsHackedCheckBox_CheckedChanged);
             // 
             // BossLabel
             // 
             this.BossLabel.AutoSize = true;
-            this.BossLabel.Location = new System.Drawing.Point(241, 23);
+            this.BossLabel.Location = new System.Drawing.Point(243, 50);
             this.BossLabel.Name = "BossLabel";
             this.BossLabel.Size = new System.Drawing.Size(101, 13);
             this.BossLabel.TabIndex = 19;
@@ -132,7 +136,7 @@
             // DispLabel
             // 
             this.DispLabel.AutoSize = true;
-            this.DispLabel.Location = new System.Drawing.Point(281, 46);
+            this.DispLabel.Location = new System.Drawing.Point(283, 73);
             this.DispLabel.Name = "DispLabel";
             this.DispLabel.Size = new System.Drawing.Size(62, 13);
             this.DispLabel.TabIndex = 20;
@@ -143,7 +147,7 @@
             this.BossComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.BossComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.BossComboBox.FormattingEnabled = true;
-            this.BossComboBox.Location = new System.Drawing.Point(349, 20);
+            this.BossComboBox.Location = new System.Drawing.Point(351, 47);
             this.BossComboBox.Name = "BossComboBox";
             this.BossComboBox.Size = new System.Drawing.Size(121, 21);
             this.BossComboBox.TabIndex = 21;
@@ -153,19 +157,20 @@
             this.DispComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.DispComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.DispComboBox.FormattingEnabled = true;
-            this.DispComboBox.Location = new System.Drawing.Point(349, 43);
+            this.DispComboBox.Location = new System.Drawing.Point(351, 70);
             this.DispComboBox.Name = "DispComboBox";
             this.DispComboBox.Size = new System.Drawing.Size(121, 21);
             this.DispComboBox.TabIndex = 22;
             // 
             // AddEmplButton
             // 
-            this.AddEmplButton.Location = new System.Drawing.Point(349, 70);
+            this.AddEmplButton.Location = new System.Drawing.Point(478, 47);
             this.AddEmplButton.Name = "AddEmplButton";
-            this.AddEmplButton.Size = new System.Drawing.Size(121, 38);
+            this.AddEmplButton.Size = new System.Drawing.Size(140, 46);
             this.AddEmplButton.TabIndex = 23;
             this.AddEmplButton.Text = "Добавить сотрудника";
             this.AddEmplButton.UseVisualStyleBackColor = true;
+            this.AddEmplButton.Click += new System.EventHandler(this.AddEmplButton_Click);
             // 
             // CancelButton
             // 
@@ -187,11 +192,43 @@
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // ContractComboBox
+            // 
+            this.ContractComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ContractComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ContractComboBox.FormattingEnabled = true;
+            this.ContractComboBox.Location = new System.Drawing.Point(351, 21);
+            this.ContractComboBox.Name = "ContractComboBox";
+            this.ContractComboBox.Size = new System.Drawing.Size(121, 21);
+            this.ContractComboBox.TabIndex = 26;
+            // 
+            // ContractLabel
+            // 
+            this.ContractLabel.AutoSize = true;
+            this.ContractLabel.Location = new System.Drawing.Point(293, 24);
+            this.ContractLabel.Name = "ContractLabel";
+            this.ContractLabel.Size = new System.Drawing.Size(51, 13);
+            this.ContractLabel.TabIndex = 27;
+            this.ContractLabel.Text = "Договор";
+            // 
+            // AddContractButton
+            // 
+            this.AddContractButton.Location = new System.Drawing.Point(478, 21);
+            this.AddContractButton.Name = "AddContractButton";
+            this.AddContractButton.Size = new System.Drawing.Size(140, 21);
+            this.AddContractButton.TabIndex = 28;
+            this.AddContractButton.Text = "Добавить договор";
+            this.AddContractButton.UseVisualStyleBackColor = true;
+            this.AddContractButton.Click += new System.EventHandler(this.AddContractButton_Click);
+            // 
             // AddCall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 235);
+            this.ClientSize = new System.Drawing.Size(633, 234);
+            this.Controls.Add(this.AddContractButton);
+            this.Controls.Add(this.ContractLabel);
+            this.Controls.Add(this.ContractComboBox);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.AddEmplButton);
@@ -231,5 +268,8 @@
         private System.Windows.Forms.Button AddEmplButton;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.ComboBox ContractComboBox;
+        private System.Windows.Forms.Label ContractLabel;
+        private System.Windows.Forms.Button AddContractButton;
     }
 }

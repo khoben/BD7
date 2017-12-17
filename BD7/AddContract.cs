@@ -96,7 +96,7 @@ namespace BD7
                 adapter.Fill(dataTable);
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    if (row["Position"].ToString() != "21") //если не сотрудник отдела по работч с клиентами
+                    if (row["Position"].ToString() != "21") //если не сотрудник отдела по работе с клиентами
                         continue;
                     emplIDs.Add(Convert.ToInt32(row["ID"].ToString()));
                     EmplComboBox.Items.Add(
