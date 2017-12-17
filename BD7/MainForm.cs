@@ -479,8 +479,6 @@ namespace BD7
                     row.Cells["Начальник наряда"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", idBoss);
                     row.Cells["Диспетчер"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", idDisp);
 
-                    row.Cells["Начальник наряда"].ReadOnly = true;
-                    row.Cells["Диспетчер"].ReadOnly = true;
 
                     row.Cells["Был взлом"].Value = Config.TrueFalse[row.Cells["Был взлом"].Value.ToString()];
                     row.Cells["Ложный вызов"].Value = Config.TrueFalse[row.Cells["Ложный вызов"].Value.ToString()];
@@ -537,9 +535,48 @@ namespace BD7
                 UpdateEntry();
         }
 
-        private void RawEditLabel_Click(object sender, EventArgs e)
-        {
 
+        //вызывает форму вида Add<formName> для редактирования
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            int curRow = GetSelectedRow();
+
+            if (curRow == -1)
+            {
+                MessageBox.Show("Сначала выберите запись для рекдатирования.");
+                return;
+            }
+
+            Config.valueFromTableForEdit.Clear();
+
+
+            foreach (DataGridViewCell cell in dataGridView.Rows[curRow].Cells)
+            {
+                Config.valueFromTableForEdit.Add(cell.OwningColumn.Name, cell.Value.ToString());
+            }
+
+            string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
+
+            try
+            {
+                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm)) as Form;
+                form.Text = "Редактирование";
+                form.Show();
+            }
+            catch (ArgumentNullException arg)
+            {
+                MessageBox.Show("Форма для данного контекста еще не задана");
+            }
+
+
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            Type t = this.GetType();
+            string str = _current_table.Substring(1, _current_table.Length - 2) + "sList";
+            MethodInfo method = t.GetMethod(str);
+            method.Invoke(this, null);
         }
     }
 }

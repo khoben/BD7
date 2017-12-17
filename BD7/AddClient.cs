@@ -15,8 +15,6 @@ namespace BD7
         public AddClient()
         {
             InitializeComponent();
-
-            ClearForm();
         }
 
         private void ClearForm()
@@ -94,10 +92,23 @@ namespace BD7
 
             try
             {
-                Authorization.ODBC.Insert("\"Client\"",
-                    vals
-                );
-                ClearForm();
+                if (Text == "Редактирование")
+                {
+                    Authorization.ODBC.Update("\"Client\"", Config.valueFromTableForEdit["ID"], vals);
+
+                    MessageBox.Show("Запись успешно обновлена.");
+                    this.Close();
+                    return;
+                }
+                else
+                {
+
+                    Authorization.ODBC.Insert("\"Client\"",
+                        vals
+                    );
+                    ClearForm();
+
+                }
             }
             catch (Exception ex)
             {
@@ -106,12 +117,33 @@ namespace BD7
 
             MessageBox.Show("Клиент добавлен.");
 
+
+
             this.Close();
         }
 
         private void CancelAdding(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AddClient_Load(object sender, EventArgs e)
+        {
+            if (Text == "Редактирование")
+            {
+                this.addButton.Text = "Сохранить";
+
+                surnameTextBox.Text = Config.valueFromTableForEdit["Фамилия"];
+                nameTextBox.Text = Config.valueFromTableForEdit["Имя"];
+                otchTextBox.Text = Config.valueFromTableForEdit["Отчество"];
+                INNMTextBox.Text = Config.valueFromTableForEdit["ИНН"];
+                birthTextBox.Text = Config.valueFromTableForEdit["Дата рождения"];
+                addressTextBox.Text = Config.valueFromTableForEdit["Домашний адрес"];
+                IDMTextBox.Text = Config.valueFromTableForEdit["Паспорт"].Split(' ')[1];
+                SMTextBox.Text = Config.valueFromTableForEdit["Паспорт"].Split(' ')[0];
+            }
+            else
+                ClearForm();
         }
     }
 }
