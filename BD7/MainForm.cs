@@ -50,7 +50,6 @@ namespace BD7
 
         private bool itWasReplaceFKtoName = false;
 
-
         public MainForm(AccessRoles role, Authorization link)
         {
             InitializeComponent();
@@ -570,6 +569,7 @@ namespace BD7
             {
                 var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
                 form.Show();
+
             }
             catch (ArgumentNullException)
             {
@@ -593,6 +593,9 @@ namespace BD7
         //вызывает форму вида Add<formName> для редактирования
         private void EditButton_Click(object sender, EventArgs e)
         {
+            if (CheckNoAccess())
+                return;
+
             int curRow = GetSelectedRow();
 
             if (curRow == -1)
@@ -613,11 +616,11 @@ namespace BD7
 
             try
             {
-                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm)) as Form;
+                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
                 form.Text = "Редактирование";
                 form.Show();
             }
-            catch (ArgumentNullException arg)
+            catch (ArgumentNullException)
             {
                 MessageBox.Show("Форма для данного контекста еще не задана");
             }
@@ -625,12 +628,19 @@ namespace BD7
 
         }
 
-        private void UpdateButton_Click(object sender, EventArgs e)
+        //Обновляем текущую таблицу
+        private void UpdateTable()
         {
             Type t = this.GetType();
             string str = _current_table.Substring(1, _current_table.Length - 2) + "sList";
             MethodInfo method = t.GetMethod(str);
             method.Invoke(this, null);
+        }
+
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            UpdateTable();
         }
     }
 }

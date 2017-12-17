@@ -105,8 +105,8 @@ namespace BD7
                     Authorization.ODBC.Update("\"Client\"", Config.valueFromTableForEdit["ID"], vals);
 
                     MessageBox.Show("Запись успешно обновлена.");
-                    this.Close();
-                    return;
+
+                    ClearForm();
                 }
                 else
                 {
@@ -114,6 +114,8 @@ namespace BD7
                     Authorization.ODBC.Insert("\"Client\"",
                         vals
                     );
+
+                    MessageBox.Show("Клиент добавлен.");
                     ClearForm();
 
                 }
@@ -124,8 +126,7 @@ namespace BD7
                 return;
             }
 
-            MessageBox.Show("Клиент добавлен.");
-            
+
             if (mainForm != null)
             {
                 mainForm.ClientsList();
