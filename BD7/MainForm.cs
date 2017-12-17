@@ -220,6 +220,12 @@ namespace BD7
             if (CheckNoAccess())
                 return;
 
+            if (MessageBox.Show("Вы точно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+
+
             int index = GetSelectedRow();
             if (index == -1 || _current_table == "")
             {
