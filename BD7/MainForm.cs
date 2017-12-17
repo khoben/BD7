@@ -75,6 +75,55 @@ namespace BD7
             return false;
         }
 
+        private bool CheckNoAccess()
+        {
+            bool no_access;
+            switch (_current_table)
+            {
+                case "\"Client\"":
+                    no_access = NoAccessMessageBox(
+                        _currentRole == AccessRoles.Director
+                        || _currentRole == AccessRoles.Manager
+                    );
+                    break;
+                case "\"Contract\"":
+                    no_access = NoAccessMessageBox(
+                        _currentRole == AccessRoles.Director
+                        || _currentRole == AccessRoles.Manager
+                    );
+                    break;
+                case "\"Employee\"":
+                    no_access = NoAccessMessageBox(
+                        _currentRole == AccessRoles.Director
+                        || _currentRole == AccessRoles.Manager
+                    );
+                    break;
+                case "\"Payment\"":
+                    no_access = NoAccessMessageBox(
+                        _currentRole == AccessRoles.Director
+                        || _currentRole == AccessRoles.Accountant
+                    );
+                    break;
+                case "\"Fine\"":
+                    no_access = NoAccessMessageBox(
+                        _currentRole == AccessRoles.Director
+                        || _currentRole == AccessRoles.Accountant
+                    );
+                    break;
+                case "\"Call\"":
+                    no_access = NoAccessMessageBox(
+                        _currentRole == AccessRoles.Director
+                        || _currentRole == AccessRoles.Inspector
+                        || _currentRole == AccessRoles.Dispatcher
+                    );
+                    break;
+                default:
+                    no_access = false;
+                    break;
+            }
+            return no_access;
+        }
+
         // при закрытии формы, также выходим из приложения
 
         private void OnClose(object sender, FormClosedEventArgs e)
@@ -169,20 +218,7 @@ namespace BD7
 
         private void DeleteClient(object sendet, EventArgs e)
         {
-            bool no_access;
-            switch (_current_table)
-            {
-                case "\"Client\"":
-                    no_access = NoAccessMessageBox(
-                        _currentRole == AccessRoles.Director
-                        || _currentRole == AccessRoles.Manager
-                    );
-                    break;
-                default:
-                    no_access = false;
-                    break;
-            }
-            if (no_access)
+            if (CheckNoAccess())
                 return;
 
             int index = GetSelectedRow();
@@ -242,25 +278,7 @@ namespace BD7
 
         private void UpdateEntry()
         {
-            bool no_access;
-            switch (_current_table)
-            {
-                case "\"Client\"":   //TODO: Разделить права
-                case "\"Contract\"":
-                case "\"Employee\"":
-                case "\"Payment\"":
-                case "\"Fine\"":
-                case "\"Call\"":
-                    no_access = NoAccessMessageBox(
-                        _currentRole == AccessRoles.Director
-                        || _currentRole == AccessRoles.Manager
-                    );
-                    break;
-                default:
-                    no_access = false;
-                    break;
-            }
-            if (no_access)
+            if (CheckNoAccess())
                 return;
 
             int index = GetSelectedRow();
@@ -510,6 +528,9 @@ namespace BD7
         //вызывает форму вида Add<formName>
         private void callFormFromCurrentContext(object sender, EventArgs e)
         {
+            if (CheckNoAccess())
+                return;
+
             string nameForm = "Add" + _current_table.Substring(1, _current_table.Length - 2);
 
             try
@@ -517,7 +538,7 @@ namespace BD7
                 var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm)) as Form;
                 form.Show();
             }
-            catch (ArgumentNullException arg)
+            catch (ArgumentNullException)
             {
                 MessageBox.Show("Форма для данного контекста еще не задана");
             }
