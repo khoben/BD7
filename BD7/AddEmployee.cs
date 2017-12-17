@@ -14,12 +14,19 @@ namespace BD7
     {
         // Храним ИД внешних записей
         private List<int> posIDs = new List<int>();
+        private MainForm mainForm;
 
         public AddEmployee()
         {
             InitializeComponent();
-
             FillForm();
+        }
+
+        public AddEmployee(MainForm mainForm)
+        {
+            InitializeComponent();
+            FillForm();
+            this.mainForm = mainForm;
         }
 
         // Заполнение формы при старте
@@ -60,6 +67,7 @@ namespace BD7
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+                return;
             }
             dataTable.Clear();
         }
@@ -116,9 +124,14 @@ namespace BD7
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+                return;
             }
 
             MessageBox.Show("Сотрудник добавлен.");
+            if (mainForm != null)
+            {
+                mainForm.EmployeesList();
+            }
             this.Close();
         }
 

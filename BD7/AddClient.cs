@@ -12,11 +12,19 @@ namespace BD7
 {
     public partial class AddClient : Form
     {
+        private MainForm mainForm;
         public AddClient()
         {
             InitializeComponent();
 
             ClearForm();
+        }
+
+        public AddClient(MainForm form)
+        {
+            InitializeComponent();
+            ClearForm();
+            mainForm = form;
         }
 
         private void ClearForm()
@@ -102,9 +110,15 @@ namespace BD7
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+                return;
             }
 
             MessageBox.Show("Клиент добавлен.");
+
+            if (mainForm != null)
+            {
+                mainForm.ClientsList();
+            }
 
             this.Close();
         }

@@ -75,6 +75,7 @@ namespace BD7
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+                return;
             }
 
             MessageBox.Show("Квартира добавлена.");

@@ -67,57 +67,56 @@
             this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(771, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1156, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // клиентыToolStripMenuItem
             // 
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(92, 29);
             this.клиентыToolStripMenuItem.Text = "Клиенты";
             this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
             // договораToolStripMenuItem
             // 
             this.договораToolStripMenuItem.Name = "договораToolStripMenuItem";
-            this.договораToolStripMenuItem.Size = new System.Drawing.Size(75, 22);
+            this.договораToolStripMenuItem.Size = new System.Drawing.Size(110, 29);
             this.договораToolStripMenuItem.Text = "Договоры";
             this.договораToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
             // сотрудникиToolStripMenuItem
             // 
             this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(85, 22);
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(122, 29);
             this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
             this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
             // платежиToolStripMenuItem
             // 
             this.платежиToolStripMenuItem.Name = "платежиToolStripMenuItem";
-            this.платежиToolStripMenuItem.Size = new System.Drawing.Size(68, 22);
+            this.платежиToolStripMenuItem.Size = new System.Drawing.Size(94, 29);
             this.платежиToolStripMenuItem.Text = "Платежи";
             this.платежиToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
             // штрафыToolStripMenuItem
             // 
             this.штрафыToolStripMenuItem.Name = "штрафыToolStripMenuItem";
-            this.штрафыToolStripMenuItem.Size = new System.Drawing.Size(66, 22);
+            this.штрафыToolStripMenuItem.Size = new System.Drawing.Size(93, 29);
             this.штрафыToolStripMenuItem.Text = "Штрафы";
             this.штрафыToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
             // звонкиToolStripMenuItem
             // 
             this.звонкиToolStripMenuItem.Name = "звонкиToolStripMenuItem";
-            this.звонкиToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.звонкиToolStripMenuItem.Size = new System.Drawing.Size(163, 29);
             this.звонкиToolStripMenuItem.Text = "Сигналы тревоги";
             this.звонкиToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
             // отчетыToolStripMenuItem
             // 
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
-            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(84, 29);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
             // 
             // настройкиToolStripMenuItem
@@ -125,13 +124,13 @@
             this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.сменитьПользователяToolStripMenuItem});
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 22);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(112, 29);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             // 
             // сменитьПользователяToolStripMenuItem
             // 
             this.сменитьПользователяToolStripMenuItem.Name = "сменитьПользователяToolStripMenuItem";
-            this.сменитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.сменитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(281, 30);
             this.сменитьПользователяToolStripMenuItem.Text = "Сменить пользователя";
             this.сменитьПользователяToolStripMenuItem.Click += new System.EventHandler(this.OnChangeUser);
             // 
@@ -142,25 +141,24 @@
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(8, 62);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView.Location = new System.Drawing.Point(12, 95);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView.Size = new System.Drawing.Size(755, 200);
+            this.dataGridView.Size = new System.Drawing.Size(1132, 308);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             // 
             // queryInfoLabel
             // 
             this.queryInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.queryInfoLabel.Location = new System.Drawing.Point(8, 29);
-            this.queryInfoLabel.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.queryInfoLabel.Location = new System.Drawing.Point(12, 45);
+            this.queryInfoLabel.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
             this.queryInfoLabel.Name = "queryInfoLabel";
-            this.queryInfoLabel.Size = new System.Drawing.Size(755, 23);
+            this.queryInfoLabel.Size = new System.Drawing.Size(1132, 35);
             this.queryInfoLabel.TabIndex = 2;
             this.queryInfoLabel.Text = "Не выполнено ни одного запроса";
             this.queryInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -169,18 +167,16 @@
             // 
             this.searchPatternTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.searchPatternTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.searchPatternTextBox.Location = new System.Drawing.Point(8, 287);
-            this.searchPatternTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.searchPatternTextBox.Location = new System.Drawing.Point(12, 442);
             this.searchPatternTextBox.Name = "searchPatternTextBox";
-            this.searchPatternTextBox.Size = new System.Drawing.Size(201, 20);
+            this.searchPatternTextBox.Size = new System.Drawing.Size(300, 26);
             this.searchPatternTextBox.TabIndex = 3;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(233, 283);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(2);
+            this.searchButton.Location = new System.Drawing.Point(350, 435);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(74, 26);
+            this.searchButton.Size = new System.Drawing.Size(111, 40);
             this.searchButton.TabIndex = 4;
             this.searchButton.Text = "Поиск";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -188,10 +184,9 @@
             // 
             // deleteRowButton
             // 
-            this.deleteRowButton.Location = new System.Drawing.Point(660, 285);
-            this.deleteRowButton.Margin = new System.Windows.Forms.Padding(2);
+            this.deleteRowButton.Location = new System.Drawing.Point(990, 438);
             this.deleteRowButton.Name = "deleteRowButton";
-            this.deleteRowButton.Size = new System.Drawing.Size(100, 23);
+            this.deleteRowButton.Size = new System.Drawing.Size(150, 35);
             this.deleteRowButton.TabIndex = 5;
             this.deleteRowButton.Text = "Удалить";
             this.deleteRowButton.UseVisualStyleBackColor = true;
@@ -199,9 +194,10 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(460, 287);
+            this.AddButton.Location = new System.Drawing.Point(690, 442);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(86, 23);
+            this.AddButton.Size = new System.Drawing.Size(129, 35);
             this.AddButton.TabIndex = 6;
             this.AddButton.Text = "Добавить";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -209,9 +205,10 @@
             // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(566, 286);
+            this.EditButton.Location = new System.Drawing.Point(849, 440);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(75, 23);
+            this.EditButton.Size = new System.Drawing.Size(112, 35);
             this.EditButton.TabIndex = 7;
             this.EditButton.Text = "Изменить";
             this.EditButton.UseVisualStyleBackColor = true;
@@ -219,28 +216,31 @@
             // LabelUsername
             // 
             this.LabelUsername.AutoSize = true;
-            this.LabelUsername.Location = new System.Drawing.Point(619, 5);
+            this.LabelUsername.Location = new System.Drawing.Point(910, 9);
+            this.LabelUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelUsername.Name = "LabelUsername";
-            this.LabelUsername.Size = new System.Drawing.Size(35, 13);
+            this.LabelUsername.Size = new System.Drawing.Size(51, 20);
             this.LabelUsername.TabIndex = 8;
             this.LabelUsername.Text = "label1";
             // 
             // RawEditLabel
             // 
             this.RawEditLabel.AutoSize = true;
-            this.RawEditLabel.Location = new System.Drawing.Point(590, 35);
+            this.RawEditLabel.Location = new System.Drawing.Point(885, 54);
+            this.RawEditLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.RawEditLabel.Name = "RawEditLabel";
-            this.RawEditLabel.Size = new System.Drawing.Size(133, 13);
+            this.RawEditLabel.Size = new System.Drawing.Size(199, 20);
             this.RawEditLabel.TabIndex = 10;
             this.RawEditLabel.Text = "Прямое редактирование";
             this.RawEditLabel.Click += new System.EventHandler(this.RawEditLabel_Click);
             // 
             // ToogleRawEditButton
             // 
-            this.ToogleRawEditButton.Location = new System.Drawing.Point(729, 34);
+            this.ToogleRawEditButton.Location = new System.Drawing.Point(1094, 52);
+            this.ToogleRawEditButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ToogleRawEditButton.Name = "ToogleRawEditButton";
-            this.ToogleRawEditButton.Padding = new System.Windows.Forms.Padding(6);
-            this.ToogleRawEditButton.Size = new System.Drawing.Size(32, 14);
+            this.ToogleRawEditButton.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.ToogleRawEditButton.Size = new System.Drawing.Size(48, 22);
             this.ToogleRawEditButton.TabIndex = 9;
             this.ToogleRawEditButton.CheckedChanged += new System.EventHandler(this.ToogleRawEditSwitch);
             // 
@@ -248,17 +248,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(610, 48);
+            this.label1.Location = new System.Drawing.Point(915, 74);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 12);
+            this.label1.Size = new System.Drawing.Size(201, 17);
             this.label1.TabIndex = 11;
             this.label1.Text = "экспериментальная функция";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 322);
+            this.ClientSize = new System.Drawing.Size(1156, 495);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RawEditLabel);
             this.Controls.Add(this.ToogleRawEditButton);
@@ -273,7 +274,6 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "ОВО по охране квартир";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OnClose);

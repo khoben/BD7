@@ -222,7 +222,7 @@ namespace BD7
                 return;
 
             int index = GetSelectedRow();
-            if (index == -1 || _current_table == "") //_currFunc == null 
+            if (index == -1 || _current_table == "")
             {
                 MessageBox.Show("Необходимо выбрать строку.");
                 return;
@@ -230,15 +230,43 @@ namespace BD7
             try
             {
                 string id = dataGridView["ID", index].Value.ToString();
-
-                Authorization.ODBC.Delete(_current_table, new Tuple<string, string>("\"ID\"", id));
-                //_currFunc(null, null);
+                switch (_current_table)
+                {
+                    case "\"Client\"":
+                        Authorization.ODBC.Delete("\"Client\"", new Tuple<string, string>("\"ID\"", id));
+                        ClientsList();
+                        break;
+                    case "\"Contract\"":
+                        Authorization.ODBC.Delete("\"Contract\"", new Tuple<string, string>("\"ID\"", id));
+                        ContractsList();
+                        break;
+                    case "\"Employee\"":
+                        Authorization.ODBC.Delete("\"Employee\"", new Tuple<string, string>("\"ID\"", id));
+                        EmployeesList();
+                        break;
+                    case "\"Payment\"":
+                        Authorization.ODBC.Delete("\"Payment\"", new Tuple<string, string>("\"ID\"", id));
+                        PaymentsList();
+                        break;
+                    case "\"Fine\"":
+                        Authorization.ODBC.Delete("\"Fine\"", new Tuple<string, string>("\"ID\"", id));
+                        FinesList();
+                        break;
+                    case "\"Call\"":
+                        Authorization.ODBC.Delete("\"Call\"", new Tuple<string, string>("\"ID\"", id));
+                        CallsList();
+                        break;
+                    default:
+                        throw new Exception("Неправильная указана текущая таблица: " + _current_table);
+                }
                 MessageBox.Show("Запись успешно удалена.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+                return;
             }
+            
         }
 
         private void topLevelExit_Click(object sender, EventArgs e)
@@ -537,7 +565,7 @@ namespace BD7
 
             try
             {
-                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm)) as Form;
+                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
                 form.Show();
             }
             catch (ArgumentNullException)
