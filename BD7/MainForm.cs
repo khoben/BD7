@@ -50,7 +50,6 @@ namespace BD7
 
         private bool itWasReplaceFKtoName = false;
 
-
         public MainForm(AccessRoles role, Authorization link)
         {
             InitializeComponent();
@@ -216,10 +215,16 @@ namespace BD7
 
         }
 
-        private void DeleteClient(object sendet, EventArgs e)
+        private void DeleteEntry(object sendet, EventArgs e)
         {
             if (CheckNoAccess())
                 return;
+
+            if (MessageBox.Show("Вы точно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+
 
             int index = GetSelectedRow();
             if (index == -1 || _current_table == "")
@@ -266,7 +271,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
                 return;
             }
-            
+
         }
 
         private void topLevelExit_Click(object sender, EventArgs e)
@@ -364,6 +369,10 @@ namespace BD7
                 }
                 );
 
+                //Для договора можно оставить первичный ключ
+
+                dataGridView.Columns["ID"].Visible = true;
+
                 itWasReplaceFKtoName = true;
 
                 foreach (DataGridViewRow row in dataGridView.Rows)
@@ -371,6 +380,7 @@ namespace BD7
                     row.Cells["Клиент"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", row.Cells["Клиент"].Value.ToString());
                     row.Cells["Квартира"].Value = Authorization.ODBC.getNameByFK("\"Address\"", "\"Apartment\"", row.Cells["Квартира"].Value.ToString());
                     row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                    row.Cells["Цена договора"].Value = Convert.ToDouble(row.Cells["Цена договора"].Value.ToString()).ToString();
                 }
 
                 itWasReplaceFKtoName = false;
@@ -565,6 +575,7 @@ namespace BD7
             {
                 var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
                 form.Show();
+
             }
             catch (ArgumentNullException)
             {
@@ -588,6 +599,9 @@ namespace BD7
         //вызывает форму вида Add<formName> для редактирования
         private void EditButton_Click(object sender, EventArgs e)
         {
+            if (CheckNoAccess())
+                return;
+
             int curRow = GetSelectedRow();
 
             if (curRow == -1)
@@ -608,11 +622,11 @@ namespace BD7
 
             try
             {
-                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm)) as Form;
+                var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
                 form.Text = "Редактирование";
                 form.Show();
             }
-            catch (ArgumentNullException arg)
+            catch (ArgumentNullException)
             {
                 MessageBox.Show("Форма для данного контекста еще не задана");
             }
@@ -620,12 +634,19 @@ namespace BD7
 
         }
 
-        private void UpdateButton_Click(object sender, EventArgs e)
+        //Обновляем текущую таблицу
+        private void UpdateTable()
         {
             Type t = this.GetType();
             string str = _current_table.Substring(1, _current_table.Length - 2) + "sList";
             MethodInfo method = t.GetMethod(str);
             method.Invoke(this, null);
+        }
+
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            UpdateTable();
         }
     }
 }

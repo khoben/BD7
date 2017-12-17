@@ -192,7 +192,7 @@ namespace BD7
                                                             ["\"Subscription_fee\""] = "Subscription_fee"
                                                         });
                 adapter.Fill(dataTable);
-                
+
                 foreach (DataRow row in dataTable.Rows)
                 {
                     contractIDs.Add(Convert.ToInt32(row["ID"].ToString()));

@@ -23,7 +23,7 @@ namespace BD7
         {
             InitializeComponent();
             FillForm();
-            
+
         }
 
         public AddContract(MainForm mainForm)
@@ -167,7 +167,7 @@ namespace BD7
 
         private string ConvertFromRoubleToDoubleDB(string text)
         {
-            text = text.Substring(1);
+            //text = text.Substring(1);
             text = text.Replace(',', '.');
             return text;
         }
@@ -267,8 +267,7 @@ namespace BD7
                     Authorization.ODBC.Update("\"Contract\"", Config.valueFromTableForEdit["ID"], vals);
 
                     MessageBox.Show("Договор успешно обновлен.");
-                    this.Close();
-                    return;
+
                 }
                 else
                 {
@@ -276,6 +275,7 @@ namespace BD7
                     Authorization.ODBC.Insert("\"Contract\"",
                         vals
                     );
+                    MessageBox.Show("Договор добавлен.");
                 }
             }
             catch (Exception ex)
@@ -284,7 +284,7 @@ namespace BD7
                 return;
             }
 
-            MessageBox.Show("Договор добавлен.");
+
             if (mainForm != null)
             {
                 mainForm.ContractsList();

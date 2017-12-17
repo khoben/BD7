@@ -122,14 +122,15 @@ namespace BD7
                     Authorization.ODBC.Update("\"Employee\"", Config.valueFromTableForEdit["ID"], vals);
 
                     MessageBox.Show("Карточка сотрудника была обновлена.");
-                    this.Close();
-                    return;
+
+
                 }
                 else
                 {
                     Authorization.ODBC.Insert("\"Employee\"",
                         vals
                     );
+                    MessageBox.Show("Сотрудник добавлен.");
                 }
             }
             catch (Exception ex)
@@ -138,7 +139,7 @@ namespace BD7
                 return;
             }
 
-            MessageBox.Show("Сотрудник добавлен.");
+
             if (mainForm != null)
             {
                 mainForm.EmployeesList();
