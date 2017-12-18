@@ -438,7 +438,12 @@ namespace BD7
                     Authorization.ODBC.Insert("\"Call\"",
                         vals
                     );
+<<<<<<< HEAD
                 MessageBox.Show("Сигнал тревоги успешно добавлен");
+=======
+                    MessageBox.Show("Сигнал треговоги успешно добавлен.");
+                }
+>>>>>>> 8f548a25d99d8d76cb6305d2cf025e3688c133f4
             }
             catch (Exception ex)
             {
@@ -446,11 +451,14 @@ namespace BD7
                 return;
             }
 
+<<<<<<< HEAD
+=======
             if (mainForm != null)
             {
                 mainForm.CallsList();
             }
 
+>>>>>>> 8f548a25d99d8d76cb6305d2cf025e3688c133f4
             this.Close();
         }
 

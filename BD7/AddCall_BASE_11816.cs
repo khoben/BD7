@@ -13,7 +13,7 @@ namespace BD7
     public partial class AddCall : Form
     {
         // Храним ИД внешних записей
-        private List<int> contrIDs = new List<int>(),
+        private List<int> contrIDs = new List<int>(), 
                           emplBIDs = new List<int>(),
                           emplDIDs = new List<int>();
 
@@ -329,28 +329,6 @@ namespace BD7
             dataTable.Clear();
         }
 
-        private void AddCall_Load(object sender, EventArgs e)
-        {
-            if (Text == "Редактирование")
-            {
-                this.AddButton.Text = "Сохранить";
-
-                DateMTextBox.Text = Config.valueFromTableForEdit["Дата"];
-                StartTimeMTextBox.Text = Config.valueFromTableForEdit["Время"];
-                ArrivalTimeMTextBox.Text = Config.valueFromTableForEdit["Время прибытия экипажа"];
-                FalseCallCheckBox.Checked = Config.valueFromTableForEdit["Ложный вызов"] == "Да" ? true : false;
-                IsHackedCheckBox.Checked = Config.valueFromTableForEdit["Был взлом"] == "Да" ? true : false;
-
-                updateComboBoxies();
-
-                ContractComboBox.SelectedIndex = ContractComboBox.FindStringExact(Config.valueFromTableForEdit["Договор"]);
-                BossComboBox.SelectedIndex = BossComboBox.FindStringExact(Config.valueFromTableForEdit["Начальник наряда"]);
-                DispComboBox.SelectedIndex = DispComboBox.FindStringExact(Config.valueFromTableForEdit["Диспетчер"]);
-            }
-            else
-                FillForm();
-        }
-
         private void AddButton_Click(object sender, EventArgs e)
         {
             // Заглушка на проверку правильности ввода
@@ -426,19 +404,9 @@ namespace BD7
 
             try
             {
-                if (Text == "Редактирование")
-                {
-                    Authorization.ODBC.Update("\"Call\"", Config.valueFromTableForEdit["ID"], vals);
-
-                    MessageBox.Show("Сигнал треговоги успешно обновлен.");
-                }
-                else
-                {
-
-                    Authorization.ODBC.Insert("\"Call\"",
+                Authorization.ODBC.Insert("\"Call\"",
                         vals
                     );
-                MessageBox.Show("Сигнал тревоги успешно добавлен");
             }
             catch (Exception ex)
             {
@@ -448,7 +416,7 @@ namespace BD7
 
             if (mainForm != null)
             {
-                mainForm.CallsList();
+                mainForm.ContractsList();
             }
 
             this.Close();

@@ -54,11 +54,11 @@
             // SubcriptionLabel
             // 
             this.SubcriptionLabel.AutoSize = true;
-            this.SubcriptionLabel.Location = new System.Drawing.Point(12, 45);
+            this.SubcriptionLabel.Location = new System.Drawing.Point(50, 45);
             this.SubcriptionLabel.Name = "SubcriptionLabel";
-            this.SubcriptionLabel.Size = new System.Drawing.Size(115, 13);
+            this.SubcriptionLabel.Size = new System.Drawing.Size(75, 13);
             this.SubcriptionLabel.TabIndex = 19;
-            this.SubcriptionLabel.Text = "Ежемесячная оплата";
+            this.SubcriptionLabel.Text = "Цена штрафа";
             // 
             // DateMTextBox
             // 
@@ -196,6 +196,7 @@
             this.Controls.Add(this.SubcriptionLabel);
             this.Name = "AddFine";
             this.Text = "Добавить штраф";
+            this.Load += new System.EventHandler(this.AddFine_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

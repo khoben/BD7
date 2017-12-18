@@ -260,7 +260,12 @@ namespace BD7
                     Authorization.ODBC.Insert("\"Fine\"",
                         vals
                     );
+<<<<<<< HEAD
                 MessageBox.Show("Штраф успешно добавлен");
+=======
+                    MessageBox.Show("Штраф добавлен.");
+                }
+>>>>>>> 8f548a25d99d8d76cb6305d2cf025e3688c133f4
             }
             catch (Exception ex)
             {
@@ -268,11 +273,6 @@ namespace BD7
                 return;
             }
 
-
-            if (mainForm != null)
-            {
-                mainForm.ContractsList();
-            }
 
             this.Close();
         }
