@@ -102,8 +102,13 @@ namespace BD7
         private void addButton_Click(object sender, EventArgs e)
         {
             // Заглушка на проверку правильности ввода
-            if ((PosComboBox.SelectedIndex == -1))
+
+
+            if (surnameTextBox.Text == "" || nameTextBox.Text == "" || otchTextBox.Text == "" || PosComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не заполнены некоторые поля");
                 return;
+            }
 
             Dictionary<string, string> vals = new Dictionary<string, string>()
             {
