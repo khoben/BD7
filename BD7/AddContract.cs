@@ -288,10 +288,6 @@ namespace BD7
             }
 
 
-            if (mainForm != null)
-            {
-                mainForm.ContractsList();
-            }
             this.Close();
         }
 

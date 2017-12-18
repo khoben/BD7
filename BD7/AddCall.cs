@@ -414,11 +414,6 @@ namespace BD7
                 return;
             }
 
-            if (mainForm != null)
-            {
-                mainForm.ContractsList();
-            }
-
             this.Close();
         }
 

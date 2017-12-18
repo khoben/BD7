@@ -31,6 +31,25 @@ namespace BD7
             this.mainForm = mainForm;
         }
 
+        public void SetForm()
+        {
+            if (Text == "Редактирование")
+            {
+                addButton.Text = "Сохранить";
+                string res = Authorization.ODBC.getNameByFK(
+                    "TO_CHAR(\"Payment_date\", 'DD.MM.YYYY') || '_' || \"Payment_sum\" || '_ ' " +
+                    "|| \"ID_invoice_type\" || '_' || \"Contract_ID\" || '_' || \"ID_accountant\"", 
+                    "\"Payment\"", Config.CurrentIndex.ToString());
+                string[] columns = res.Split('_');
+
+                dateTextBox.Text = columns[0];          // дата платежа
+                sumTextBox.Text = columns[1];           // сумма платежа
+                typePaymentComboBox.SelectedIndex = typePaymentIDS.IndexOf(int.Parse(columns[2]));      // тип платежа
+                contractComboBox.SelectedIndex = contractIDs.IndexOf(int.Parse(columns[3]));       // договор
+                accountantComboBox.SelectedIndex = accountantIDs.IndexOf(int.Parse(columns[4]));    // бухгалтер
+            }
+        }
+
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
@@ -112,24 +131,43 @@ namespace BD7
 
             vals = PrepareData(vals);
 
-            try
+            if (Text != "Редактирование")
             {
-                Authorization.ODBC.Insert("\"Payment\"",
-                    vals
-                );
+                try
+                {
+                    Authorization.ODBC.Insert("\"Payment\"",
+                        vals
+                    );
+                    MessageBox.Show("Платеж добавлен.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                    return;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message.ToString());
-                return;
+                try
+                {
+                    Authorization.ODBC.Update("\"Payment\"", Config.CurrentIndex.ToString(), vals);
+                    MessageBox.Show("Платеж обновлен");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                    return;
+                }
             }
-
-            MessageBox.Show("Платеж добавлен.");
-            if (mainForm != null)
-            {
-                mainForm.ContractsList();
-            }
+            
+      
             this.Close();
+        }
+
+        private void AddPayment_Load(object sender, EventArgs e)
+        {
+            SetForm();
+            
         }
 
         public void FillForm()

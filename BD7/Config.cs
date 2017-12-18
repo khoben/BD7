@@ -44,6 +44,7 @@ namespace BD7
 
         public static Dictionary<string, string> valueFromTableForEdit = new Dictionary<string, string>();
 
+        public static int CurrentIndex;
     }
 
 }

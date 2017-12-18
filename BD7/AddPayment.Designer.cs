@@ -166,6 +166,7 @@
             this.Controls.Add(this.dateTextBox);
             this.Name = "AddPayment";
             this.Text = "Добавить платеж";
+            this.Load += new System.EventHandler(this.AddPayment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -653,6 +653,7 @@ namespace BD7
 
             try
             {
+                Config.CurrentIndex = Convert.ToInt32(dataGridView["ID", curRow].Value.ToString());
                 var form = Activator.CreateInstance(Type.GetType("BD7." + nameForm), this) as Form;
                 form.Text = "Редактирование";
                 form.Show();

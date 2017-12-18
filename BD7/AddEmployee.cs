@@ -140,10 +140,6 @@ namespace BD7
             }
 
 
-            if (mainForm != null)
-            {
-                mainForm.EmployeesList();
-            }
             this.Close();
         }
 
