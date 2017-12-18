@@ -187,7 +187,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(788, 275);
+            this.CancelButton.Location = new System.Drawing.Point(784, 275);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(120, 51);
@@ -243,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1262, 360);
+            this.ClientSize = new System.Drawing.Size(1262, 345);
             this.Controls.Add(this.AddContractButton);
             this.Controls.Add(this.ContractLabel);
             this.Controls.Add(this.ContractComboBox);

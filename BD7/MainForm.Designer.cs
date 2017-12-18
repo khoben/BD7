@@ -35,6 +35,7 @@
             this.платежиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.штрафыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.звонкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.украденныеВещиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +47,6 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.LabelUsername = new System.Windows.Forms.Label();
-            this.RawEditLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.ToogleRawEditButton = new BD7.MyCheckBox();
             this.menuStrip1.SuspendLayout();
@@ -64,11 +63,12 @@
             this.платежиToolStripMenuItem,
             this.штрафыToolStripMenuItem,
             this.звонкиToolStripMenuItem,
+            this.украденныеВещиToolStripMenuItem,
             this.отчетыToolStripMenuItem,
             this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1156, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1276, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -114,6 +114,13 @@
             this.звонкиToolStripMenuItem.Text = "Сигналы тревоги";
             this.звонкиToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
             // 
+            // украденныеВещиToolStripMenuItem
+            // 
+            this.украденныеВещиToolStripMenuItem.Name = "украденныеВещиToolStripMenuItem";
+            this.украденныеВещиToolStripMenuItem.Size = new System.Drawing.Size(173, 29);
+            this.украденныеВещиToolStripMenuItem.Text = "Украденные вещи";
+            this.украденныеВещиToolStripMenuItem.Click += new System.EventHandler(this.ChangeCurrentContext);
+            // 
             // отчетыToolStripMenuItem
             // 
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
@@ -143,14 +150,14 @@
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 95);
+            this.dataGridView.Location = new System.Drawing.Point(17, 94);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1132, 308);
+            this.dataGridView.Size = new System.Drawing.Size(1237, 308);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             // 
@@ -219,33 +226,12 @@
             // LabelUsername
             // 
             this.LabelUsername.AutoSize = true;
-            this.LabelUsername.Location = new System.Drawing.Point(930, 8);
+            this.LabelUsername.Location = new System.Drawing.Point(1030, 54);
             this.LabelUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelUsername.Name = "LabelUsername";
             this.LabelUsername.Size = new System.Drawing.Size(51, 20);
             this.LabelUsername.TabIndex = 8;
             this.LabelUsername.Text = "label1";
-            // 
-            // RawEditLabel
-            // 
-            this.RawEditLabel.AutoSize = true;
-            this.RawEditLabel.Location = new System.Drawing.Point(885, 54);
-            this.RawEditLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.RawEditLabel.Name = "RawEditLabel";
-            this.RawEditLabel.Size = new System.Drawing.Size(199, 20);
-            this.RawEditLabel.TabIndex = 10;
-            this.RawEditLabel.Text = "Прямое редактирование";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(915, 74);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 17);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "экспериментальная функция";
             // 
             // UpdateButton
             // 
@@ -259,10 +245,10 @@
             // 
             // ToogleRawEditButton
             // 
-            this.ToogleRawEditButton.Location = new System.Drawing.Point(1094, 52);
+            this.ToogleRawEditButton.Location = new System.Drawing.Point(548, 453);
             this.ToogleRawEditButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ToogleRawEditButton.Name = "ToogleRawEditButton";
-            this.ToogleRawEditButton.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.ToogleRawEditButton.Padding = new System.Windows.Forms.Padding(9);
             this.ToogleRawEditButton.Size = new System.Drawing.Size(48, 22);
             this.ToogleRawEditButton.TabIndex = 9;
             this.ToogleRawEditButton.CheckedChanged += new System.EventHandler(this.ToogleRawEditSwitch);
@@ -271,10 +257,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1156, 500);
+            this.ClientSize = new System.Drawing.Size(1276, 500);
             this.Controls.Add(this.UpdateButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.RawEditLabel);
             this.Controls.Add(this.ToogleRawEditButton);
             this.Controls.Add(this.LabelUsername);
             this.Controls.Add(this.EditButton);
@@ -320,8 +304,7 @@
         private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
         private System.Windows.Forms.Label LabelUsername;
         private MyCheckBox ToogleRawEditButton;
-        private System.Windows.Forms.Label RawEditLabel;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.ToolStripMenuItem украденныеВещиToolStripMenuItem;
     }
 }

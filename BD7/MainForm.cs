@@ -38,6 +38,7 @@ namespace BD7
             if (_currentRole != AccessRoles.Director)
                 this.ToogleRawEditButton.Enabled = false;
 
+            ToogleRawEditButton.Dispose();
             this.LabelUsername.Text = "Пользователь: " + Authorization.login;
 
             this.queryInfoLabel.Text = "Клиенты";
@@ -591,6 +592,50 @@ namespace BD7
             }
         }
 
+        // украденные вещи
+        public void StolenList()
+        {
+            try
+            {
+                string currentTable = "\"Stolen_stuffs\"";
+                Authorization.ODBC.Select(currentTable, tableView: dataGridView,
+                values: new Dictionary<string, string>()
+                {
+                    ["\"ID\""] = "\"ID\"",
+                    ["\"Name\""] = "\"Наименование\"",
+                    ["\"Price\""] = "\"Цена\"",
+                    ["\"Amount\""] = "\"Количество\"",
+                    ["\"Call_ID\""] = "\"Сигнал тревоги\""
+                }
+                );
+
+                itWasReplaceFKtoName = true;
+
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    string contract_id_time = Authorization.ODBC.getNameByFK("\"Contract_ID\" || '_' || TO_CHAR(\"Date\", 'DD.MM.YYYY')", "\"Call\"", row.Cells["Сигнал тревоги"].Value.ToString());
+                    string contract_id = contract_id_time.Split('_')[0];
+                    string time = contract_id_time.Split('_')[1];
+
+                    string client_id = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", contract_id);
+                    string fio = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", client_id);
+
+                    row.Cells["Сигнал тревоги"].Value = fio + " " + time;
+      
+                }
+
+                itWasReplaceFKtoName = false;
+
+                _current_table = currentTable;
+
+                FillValuesToAutocomplete();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
 
         //вызывает метод вида <tableName>List
         private void ChangeCurrentContext(object sender, EventArgs e)
