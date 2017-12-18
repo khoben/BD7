@@ -683,5 +683,10 @@ namespace BD7
         {
             UpdateTable();
         }
+
+        private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Reports().Show();
+        }
     }
 }

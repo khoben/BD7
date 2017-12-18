@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.contractComboBox = new System.Windows.Forms.ComboBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,14 +60,15 @@
             // 
             this.button2.Location = new System.Drawing.Point(12, 455);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(310, 41);
+            this.button2.Size = new System.Drawing.Size(396, 41);
             this.button2.TabIndex = 2;
             this.button2.Text = "Экспорт в HTML";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(328, 455);
+            this.button3.Location = new System.Drawing.Point(437, 455);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(310, 41);
             this.button3.TabIndex = 3;
@@ -76,9 +78,9 @@
             // contractComboBox
             // 
             this.contractComboBox.FormattingEnabled = true;
-            this.contractComboBox.Location = new System.Drawing.Point(414, 395);
+            this.contractComboBox.Location = new System.Drawing.Point(437, 395);
             this.contractComboBox.Name = "contractComboBox";
-            this.contractComboBox.Size = new System.Drawing.Size(310, 28);
+            this.contractComboBox.Size = new System.Drawing.Size(374, 28);
             this.contractComboBox.TabIndex = 4;
             // 
             // Reports
@@ -105,5 +107,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox contractComboBox;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
