@@ -222,5 +222,29 @@ namespace BD7
             adapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
         }
+
+        // получить денежную информацию
+        private void commonInfoButton_Click(object sender, EventArgs e)
+        {
+            if (contractComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Необходимо выбрать контракт");
+                return;
+            }
+
+            string selectString = String.Format(@"select ""cl"".""Surname"" || ' ' || ""cl"".""Name"" || ' ' || ""cl"".""Otch"" as ""ФИО клиента"",
+                    ""table"".""sum_payments"" as ""Сумма  всех платежей"",
+                    ""table"".""sum_unpaid_invoices"" as ""Сумма неоплаченных счетов"",
+                    ""table"".""sum_fines"" as ""Сумма неоплаченных штрафов""
+                    from getitemsbytypeforcontract({0}) ""table"", ""Contract"" ""c"", ""Client"" ""cl""
+                    where ""c"".""ID"" = {0} and ""c"".""ID_client"" = ""cl"".""ID""", contractIDs[contractComboBox.SelectedIndex]);
+            NpgsqlCommand command = new NpgsqlCommand(selectString, Authorization.ODBC._connection);
+            NpgsqlDataAdapter adapter = new NpgsqlDataAdapter();
+            adapter.SelectCommand = command;
+
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
+        }
     }
 }

@@ -35,6 +35,7 @@
             this.contractComboBox = new System.Windows.Forms.ComboBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.unpaidFinesButton = new System.Windows.Forms.Button();
+            this.commonInfoButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 526);
+            this.button2.Location = new System.Drawing.Point(12, 580);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(396, 41);
             this.button2.TabIndex = 2;
@@ -69,7 +70,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(454, 526);
+            this.button3.Location = new System.Drawing.Point(435, 580);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(310, 41);
             this.button3.TabIndex = 3;
@@ -80,7 +81,7 @@
             // contractComboBox
             // 
             this.contractComboBox.FormattingEnabled = true;
-            this.contractComboBox.Location = new System.Drawing.Point(435, 420);
+            this.contractComboBox.Location = new System.Drawing.Point(435, 444);
             this.contractComboBox.Name = "contractComboBox";
             this.contractComboBox.Size = new System.Drawing.Size(374, 28);
             this.contractComboBox.TabIndex = 4;
@@ -95,11 +96,22 @@
             this.unpaidFinesButton.UseVisualStyleBackColor = true;
             this.unpaidFinesButton.Click += new System.EventHandler(this.unpaidFinesButton_Click);
             // 
+            // commonInfoButton
+            // 
+            this.commonInfoButton.Location = new System.Drawing.Point(12, 488);
+            this.commonInfoButton.Name = "commonInfoButton";
+            this.commonInfoButton.Size = new System.Drawing.Size(396, 32);
+            this.commonInfoButton.TabIndex = 6;
+            this.commonInfoButton.Text = "Общая денежная информация по договору";
+            this.commonInfoButton.UseVisualStyleBackColor = true;
+            this.commonInfoButton.Click += new System.EventHandler(this.commonInfoButton_Click);
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 592);
+            this.ClientSize = new System.Drawing.Size(1008, 644);
+            this.Controls.Add(this.commonInfoButton);
             this.Controls.Add(this.unpaidFinesButton);
             this.Controls.Add(this.contractComboBox);
             this.Controls.Add(this.button3);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.ComboBox contractComboBox;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button unpaidFinesButton;
+        private System.Windows.Forms.Button commonInfoButton;
     }
 }
