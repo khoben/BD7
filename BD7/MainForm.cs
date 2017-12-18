@@ -476,13 +476,15 @@ namespace BD7
                     ["\"ID_accountant\""] = "\"Сотрудник\""
                 }
                 );
-
+               
                 itWasReplaceFKtoName = true;
 
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     row.Cells["Тип платежа"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"InvoiceType\"", row.Cells["Тип платежа"].Value.ToString());
                     row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                    string id_client = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
+                    row.Cells["Договор"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", id_client);
                 }
 
                 itWasReplaceFKtoName = false;
@@ -521,6 +523,8 @@ namespace BD7
                 {
                     row.Cells["Тип"].Value = Authorization.ODBC.getNameByFK("\"Name\"", "\"FineType\"", row.Cells["Тип"].Value.ToString());
                     row.Cells["Сотрудник"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Employee\"", row.Cells["Сотрудник"].Value.ToString());
+                    string id_client = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
+                    row.Cells["Договор"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", id_client);
                 }
 
                 itWasReplaceFKtoName = false;
@@ -570,6 +574,8 @@ namespace BD7
 
                     row.Cells["Был взлом"].Value = Config.TrueFalse[row.Cells["Был взлом"].Value.ToString()];
                     row.Cells["Ложный вызов"].Value = Config.TrueFalse[row.Cells["Ложный вызов"].Value.ToString()];
+                    string id_client = Authorization.ODBC.getNameByFK("\"ID_client\"", "\"Contract\"", row.Cells["Договор"].Value.ToString());
+                    row.Cells["Договор"].Value = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", id_client);
                 }
 
                 itWasReplaceFKtoName = false;
