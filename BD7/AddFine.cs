@@ -57,13 +57,17 @@ namespace BD7
                 var adapter = Authorization.ODBC.Select(currentTable,
                                                         new Dictionary<string, string>()
                                                         {
-                                                            ["\"ID\""] = "ID"
+                                                            ["\"ID\""] = "ID",
+                                                            ["\"ID_client\""] = "ID_client",
+                                                            ["\"Subscription_fee\""] = "Subscription_fee"
                                                         });
                 adapter.Fill(dataTable);
                 foreach (DataRow row in dataTable.Rows)
                 {
                     contractIDs.Add(Convert.ToInt32(row["ID"].ToString()));
-                    ContractComboBox.Items.Add(row["ID"].ToString());
+                    string text = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", row["ID_client"].ToString());
+                    text += " , сумма оплаты - " + row["Subscription_fee"].ToString();
+                    ContractComboBox.Items.Add(text);
                 }
             }
             catch (Exception ex)
@@ -211,15 +215,22 @@ namespace BD7
             if (Text == "Редактирование")
             {
                 this.AddButton.Text = "Сохранить";
+                string res = Authorization.ODBC.getNameByFK(
+                    "TO_CHAR(\"Date\", 'DD.MM.YYYY') || '_' || \"Sum\" || '_ ' " +
+                    "|| \"Contract_ID\" || '_' || \"ID_type_fine\" || '_' || \"ID_accountant\"",
+                    "\"Fine\"", Config.CurrentIndex.ToString());
 
-                DateMTextBox.Text = Config.valueFromTableForEdit["Дата"];
-                SubMTextBox.Text = Config.valueFromTableForEdit["Сумма"];
+                string[] columns = res.Split('_');
+
+
+                DateMTextBox.Text = columns[0];          // дата;
+                SubMTextBox.Text = columns[1];              // сумма
 
                 updateComboBoxies();
 
-                ContractComboBox.SelectedIndex = ContractComboBox.FindStringExact(Config.valueFromTableForEdit["Договор"]);
-                BComboBox.SelectedIndex = BComboBox.FindStringExact(Config.valueFromTableForEdit["Сотрудник"]);
-                FineTypeComboBox.SelectedIndex = FineTypeComboBox.FindStringExact(Config.valueFromTableForEdit["Тип"]);
+                ContractComboBox.SelectedIndex = contractIDs.IndexOf(int.Parse(columns[2]));        // договор        
+                FineTypeComboBox.SelectedIndex = fineTypeIDs.IndexOf(int.Parse(columns[3]));        // тип платежа
+                BComboBox.SelectedIndex = BIDs.IndexOf(int.Parse(columns[4]));                      // бухгалтер
             }
             else
                 FillForm();
