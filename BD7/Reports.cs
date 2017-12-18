@@ -62,6 +62,7 @@ namespace BD7
             return dataGridView1.Columns.Count >= 1;
         }
 
+        // неоплаченные платежи
         private void unpaidInvoicesButton_Click(object sender, EventArgs e)
         {
             if (contractComboBox.SelectedIndex == -1)
@@ -194,6 +195,32 @@ namespace BD7
             }
             app.Quit();
             System.Diagnostics.Process.Start(saveFileDialog1.FileName);
+        }
+
+        // неоплаченные штрафы
+        private void unpaidFinesButton_Click(object sender, EventArgs e)
+        {
+            if (contractComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Необходимо выбрать контракт");
+                return;
+            }
+
+            string selectString = String.Format(@"select distinct ""f_type"".""Name"" as ""Тип штрафа"", 
+                 ""c"".""Surname"" || ' ' || ""c"".""Name"" || ' ' || ""c"".""Otch"" as ""ФИО клиента"",
+                ""table"".""Date"" as ""Дата выставления счета"",
+                ""table"".""Sum"" as ""Сумма к оплате""
+                from unpaid_fines(30) ""table"", ""FineType"" ""f_type"", ""Client"" ""c"",
+                ""Contract"" ""con""
+                where ""table"".""ID_type_fine"" = ""f_type"".""ID"" and
+                ""table"".""Contract_ID"" = ""con"".""ID"" and ""con"".""ID_client"" = ""c"".""ID""", contractIDs[contractComboBox.SelectedIndex]);
+            NpgsqlCommand command = new NpgsqlCommand(selectString, Authorization.ODBC._connection);
+            NpgsqlDataAdapter adapter = new NpgsqlDataAdapter();
+            adapter.SelectCommand = command;
+
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
         }
     }
 }

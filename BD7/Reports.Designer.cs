@@ -34,14 +34,15 @@
             this.button3 = new System.Windows.Forms.Button();
             this.contractComboBox = new System.Windows.Forms.ComboBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.unpaidFinesButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // unpaidInvoicesButton
             // 
-            this.unpaidInvoicesButton.Location = new System.Drawing.Point(12, 388);
+            this.unpaidInvoicesButton.Location = new System.Drawing.Point(12, 397);
             this.unpaidInvoicesButton.Name = "unpaidInvoicesButton";
-            this.unpaidInvoicesButton.Size = new System.Drawing.Size(396, 41);
+            this.unpaidInvoicesButton.Size = new System.Drawing.Size(396, 32);
             this.unpaidInvoicesButton.TabIndex = 0;
             this.unpaidInvoicesButton.Text = "Список неоплаченных платежей по договору";
             this.unpaidInvoicesButton.UseVisualStyleBackColor = true;
@@ -58,7 +59,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 455);
+            this.button2.Location = new System.Drawing.Point(12, 526);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(396, 41);
             this.button2.TabIndex = 2;
@@ -68,7 +69,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(437, 455);
+            this.button3.Location = new System.Drawing.Point(454, 526);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(310, 41);
             this.button3.TabIndex = 3;
@@ -79,16 +80,27 @@
             // contractComboBox
             // 
             this.contractComboBox.FormattingEnabled = true;
-            this.contractComboBox.Location = new System.Drawing.Point(437, 395);
+            this.contractComboBox.Location = new System.Drawing.Point(435, 420);
             this.contractComboBox.Name = "contractComboBox";
             this.contractComboBox.Size = new System.Drawing.Size(374, 28);
             this.contractComboBox.TabIndex = 4;
+            // 
+            // unpaidFinesButton
+            // 
+            this.unpaidFinesButton.Location = new System.Drawing.Point(12, 444);
+            this.unpaidFinesButton.Name = "unpaidFinesButton";
+            this.unpaidFinesButton.Size = new System.Drawing.Size(396, 32);
+            this.unpaidFinesButton.TabIndex = 5;
+            this.unpaidFinesButton.Text = "Список неоплаченных штрафов по договору";
+            this.unpaidFinesButton.UseVisualStyleBackColor = true;
+            this.unpaidFinesButton.Click += new System.EventHandler(this.unpaidFinesButton_Click);
             // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 538);
+            this.ClientSize = new System.Drawing.Size(1008, 592);
+            this.Controls.Add(this.unpaidFinesButton);
             this.Controls.Add(this.contractComboBox);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -109,5 +121,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox contractComboBox;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button unpaidFinesButton;
     }
 }
