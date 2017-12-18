@@ -50,64 +50,71 @@
             // 
             // DateMTextBox
             // 
-            this.DateMTextBox.Location = new System.Drawing.Point(110, 21);
+            this.DateMTextBox.Location = new System.Drawing.Point(165, 32);
+            this.DateMTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DateMTextBox.Mask = "00/00/0000";
             this.DateMTextBox.Name = "DateMTextBox";
-            this.DateMTextBox.Size = new System.Drawing.Size(100, 20);
+            this.DateMTextBox.Size = new System.Drawing.Size(148, 26);
             this.DateMTextBox.TabIndex = 12;
             this.DateMTextBox.ValidatingType = typeof(System.DateTime);
             // 
             // DateLabel
             // 
             this.DateLabel.AutoSize = true;
-            this.DateLabel.Location = new System.Drawing.Point(30, 24);
+            this.DateLabel.Location = new System.Drawing.Point(45, 37);
+            this.DateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(74, 13);
+            this.DateLabel.Size = new System.Drawing.Size(107, 20);
             this.DateLabel.TabIndex = 11;
             this.DateLabel.Text = "Дата вызова";
             // 
             // StartTimeMTextBox
             // 
-            this.StartTimeMTextBox.Location = new System.Drawing.Point(110, 47);
+            this.StartTimeMTextBox.Location = new System.Drawing.Point(165, 72);
+            this.StartTimeMTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.StartTimeMTextBox.Mask = "00:00";
             this.StartTimeMTextBox.Name = "StartTimeMTextBox";
-            this.StartTimeMTextBox.Size = new System.Drawing.Size(100, 20);
+            this.StartTimeMTextBox.Size = new System.Drawing.Size(148, 26);
             this.StartTimeMTextBox.TabIndex = 14;
             this.StartTimeMTextBox.ValidatingType = typeof(System.DateTime);
             // 
             // StartTLabel
             // 
             this.StartTLabel.AutoSize = true;
-            this.StartTLabel.Location = new System.Drawing.Point(23, 50);
+            this.StartTLabel.Location = new System.Drawing.Point(34, 77);
+            this.StartTLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.StartTLabel.Name = "StartTLabel";
-            this.StartTLabel.Size = new System.Drawing.Size(81, 13);
+            this.StartTLabel.Size = new System.Drawing.Size(117, 20);
             this.StartTLabel.TabIndex = 13;
             this.StartTLabel.Text = "Время вызова";
             // 
             // ArrivalTimeMTextBox
             // 
-            this.ArrivalTimeMTextBox.Location = new System.Drawing.Point(110, 73);
+            this.ArrivalTimeMTextBox.Location = new System.Drawing.Point(165, 112);
+            this.ArrivalTimeMTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ArrivalTimeMTextBox.Mask = "00:00";
             this.ArrivalTimeMTextBox.Name = "ArrivalTimeMTextBox";
-            this.ArrivalTimeMTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ArrivalTimeMTextBox.Size = new System.Drawing.Size(148, 26);
             this.ArrivalTimeMTextBox.TabIndex = 16;
             this.ArrivalTimeMTextBox.ValidatingType = typeof(System.DateTime);
             // 
             // ArrivalTLable
             // 
             this.ArrivalTLable.AutoSize = true;
-            this.ArrivalTLable.Location = new System.Drawing.Point(12, 76);
+            this.ArrivalTLable.Location = new System.Drawing.Point(18, 117);
+            this.ArrivalTLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ArrivalTLable.Name = "ArrivalTLable";
-            this.ArrivalTLable.Size = new System.Drawing.Size(92, 13);
+            this.ArrivalTLable.Size = new System.Drawing.Size(136, 20);
             this.ArrivalTLable.TabIndex = 15;
             this.ArrivalTLable.Text = "Время прибытия";
             // 
             // FalseCallCheckBox
             // 
             this.FalseCallCheckBox.AutoSize = true;
-            this.FalseCallCheckBox.Location = new System.Drawing.Point(110, 110);
+            this.FalseCallCheckBox.Location = new System.Drawing.Point(165, 169);
+            this.FalseCallCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FalseCallCheckBox.Name = "FalseCallCheckBox";
-            this.FalseCallCheckBox.Size = new System.Drawing.Size(103, 17);
+            this.FalseCallCheckBox.Size = new System.Drawing.Size(146, 24);
             this.FalseCallCheckBox.TabIndex = 17;
             this.FalseCallCheckBox.Text = "Ложный вызов";
             this.FalseCallCheckBox.UseVisualStyleBackColor = true;
@@ -116,9 +123,10 @@
             // IsHackedCheckBox
             // 
             this.IsHackedCheckBox.AutoSize = true;
-            this.IsHackedCheckBox.Location = new System.Drawing.Point(110, 133);
+            this.IsHackedCheckBox.Location = new System.Drawing.Point(165, 205);
+            this.IsHackedCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.IsHackedCheckBox.Name = "IsHackedCheckBox";
-            this.IsHackedCheckBox.Size = new System.Drawing.Size(82, 17);
+            this.IsHackedCheckBox.Size = new System.Drawing.Size(118, 24);
             this.IsHackedCheckBox.TabIndex = 18;
             this.IsHackedCheckBox.Text = "Был взлом";
             this.IsHackedCheckBox.UseVisualStyleBackColor = true;
@@ -127,18 +135,20 @@
             // BossLabel
             // 
             this.BossLabel.AutoSize = true;
-            this.BossLabel.Location = new System.Drawing.Point(243, 50);
+            this.BossLabel.Location = new System.Drawing.Point(364, 77);
+            this.BossLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BossLabel.Name = "BossLabel";
-            this.BossLabel.Size = new System.Drawing.Size(101, 13);
+            this.BossLabel.Size = new System.Drawing.Size(153, 20);
             this.BossLabel.TabIndex = 19;
             this.BossLabel.Text = "Начальник наряда";
             // 
             // DispLabel
             // 
             this.DispLabel.AutoSize = true;
-            this.DispLabel.Location = new System.Drawing.Point(283, 73);
+            this.DispLabel.Location = new System.Drawing.Point(424, 112);
+            this.DispLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DispLabel.Name = "DispLabel";
-            this.DispLabel.Size = new System.Drawing.Size(62, 13);
+            this.DispLabel.Size = new System.Drawing.Size(92, 20);
             this.DispLabel.TabIndex = 20;
             this.DispLabel.Text = "Диспетчер";
             // 
@@ -147,9 +157,10 @@
             this.BossComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.BossComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.BossComboBox.FormattingEnabled = true;
-            this.BossComboBox.Location = new System.Drawing.Point(351, 47);
+            this.BossComboBox.Location = new System.Drawing.Point(526, 72);
+            this.BossComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BossComboBox.Name = "BossComboBox";
-            this.BossComboBox.Size = new System.Drawing.Size(121, 21);
+            this.BossComboBox.Size = new System.Drawing.Size(401, 28);
             this.BossComboBox.TabIndex = 21;
             // 
             // DispComboBox
@@ -157,16 +168,18 @@
             this.DispComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.DispComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.DispComboBox.FormattingEnabled = true;
-            this.DispComboBox.Location = new System.Drawing.Point(351, 70);
+            this.DispComboBox.Location = new System.Drawing.Point(526, 108);
+            this.DispComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DispComboBox.Name = "DispComboBox";
-            this.DispComboBox.Size = new System.Drawing.Size(121, 21);
+            this.DispComboBox.Size = new System.Drawing.Size(401, 28);
             this.DispComboBox.TabIndex = 22;
             // 
             // AddEmplButton
             // 
-            this.AddEmplButton.Location = new System.Drawing.Point(478, 47);
+            this.AddEmplButton.Location = new System.Drawing.Point(966, 67);
+            this.AddEmplButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AddEmplButton.Name = "AddEmplButton";
-            this.AddEmplButton.Size = new System.Drawing.Size(140, 46);
+            this.AddEmplButton.Size = new System.Drawing.Size(210, 71);
             this.AddEmplButton.TabIndex = 23;
             this.AddEmplButton.Text = "Добавить сотрудника";
             this.AddEmplButton.UseVisualStyleBackColor = true;
@@ -174,9 +187,10 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(199, 179);
+            this.CancelButton.Location = new System.Drawing.Point(788, 275);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(80, 33);
+            this.CancelButton.Size = new System.Drawing.Size(120, 51);
             this.CancelButton.TabIndex = 25;
             this.CancelButton.Text = "Отмена";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -184,9 +198,10 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(110, 179);
+            this.AddButton.Location = new System.Drawing.Point(368, 275);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(80, 33);
+            this.AddButton.Size = new System.Drawing.Size(120, 51);
             this.AddButton.TabIndex = 24;
             this.AddButton.Text = "Добавить";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -197,25 +212,28 @@
             this.ContractComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ContractComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ContractComboBox.FormattingEnabled = true;
-            this.ContractComboBox.Location = new System.Drawing.Point(351, 21);
+            this.ContractComboBox.Location = new System.Drawing.Point(526, 32);
+            this.ContractComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ContractComboBox.Name = "ContractComboBox";
-            this.ContractComboBox.Size = new System.Drawing.Size(121, 21);
+            this.ContractComboBox.Size = new System.Drawing.Size(401, 28);
             this.ContractComboBox.TabIndex = 26;
             // 
             // ContractLabel
             // 
             this.ContractLabel.AutoSize = true;
-            this.ContractLabel.Location = new System.Drawing.Point(293, 24);
+            this.ContractLabel.Location = new System.Drawing.Point(440, 37);
+            this.ContractLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ContractLabel.Name = "ContractLabel";
-            this.ContractLabel.Size = new System.Drawing.Size(51, 13);
+            this.ContractLabel.Size = new System.Drawing.Size(73, 20);
             this.ContractLabel.TabIndex = 27;
             this.ContractLabel.Text = "Договор";
             // 
             // AddContractButton
             // 
-            this.AddContractButton.Location = new System.Drawing.Point(478, 21);
+            this.AddContractButton.Location = new System.Drawing.Point(966, 28);
+            this.AddContractButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AddContractButton.Name = "AddContractButton";
-            this.AddContractButton.Size = new System.Drawing.Size(140, 21);
+            this.AddContractButton.Size = new System.Drawing.Size(210, 32);
             this.AddContractButton.TabIndex = 28;
             this.AddContractButton.Text = "Добавить договор";
             this.AddContractButton.UseVisualStyleBackColor = true;
@@ -223,9 +241,9 @@
             // 
             // AddCall
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 234);
+            this.ClientSize = new System.Drawing.Size(1262, 360);
             this.Controls.Add(this.AddContractButton);
             this.Controls.Add(this.ContractLabel);
             this.Controls.Add(this.ContractComboBox);
@@ -244,6 +262,7 @@
             this.Controls.Add(this.StartTLabel);
             this.Controls.Add(this.DateMTextBox);
             this.Controls.Add(this.DateLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AddCall";
             this.Text = "Добавить вызов";
             this.Load += new System.EventHandler(this.AddCall_Load);

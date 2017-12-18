@@ -65,13 +65,17 @@ namespace BD7
                 var adapter = Authorization.ODBC.Select(currentTable,
                                                         new Dictionary<string, string>()
                                                         {
-                                                            ["\"ID\""] = "ID"
+                                                            ["\"ID\""] = "ID",
+                                                            ["\"ID_client\""] = "ID_client",
+                                                            ["\"Subscription_fee\""] = "Subscription_fee"
                                                         });
                 adapter.Fill(dataTable);
                 foreach (DataRow row in dataTable.Rows)
                 {
                     contrIDs.Add(Convert.ToInt32(row["ID"].ToString()));
-                    ContractComboBox.Items.Add(row["ID"].ToString());
+                    string text = Authorization.ODBC.getNameByFK("\"Surname\" || ' ' || \"Name\" || ' ' || \"Otch\"", "\"Client\"", row["ID_client"].ToString());
+                    text += " , сумма оплаты - " + row["Subscription_fee"].ToString();
+                    ContractComboBox.Items.Add(text);
                 }
             }
             catch (Exception ex)
@@ -335,6 +339,8 @@ namespace BD7
             {
                 this.AddButton.Text = "Сохранить";
 
+                string contract_id = Authorization.ODBC.getNameByFK("\"Contract_ID\"", "\"Call\"", Config.CurrentIndex.ToString());
+
                 DateMTextBox.Text = Config.valueFromTableForEdit["Дата"];
                 StartTimeMTextBox.Text = Config.valueFromTableForEdit["Время"];
                 ArrivalTimeMTextBox.Text = Config.valueFromTableForEdit["Время прибытия экипажа"];
@@ -343,7 +349,7 @@ namespace BD7
 
                 updateComboBoxies();
 
-                ContractComboBox.SelectedIndex = ContractComboBox.FindStringExact(Config.valueFromTableForEdit["Договор"]);
+                ContractComboBox.SelectedIndex = contrIDs.IndexOf(int.Parse(contract_id));
                 BossComboBox.SelectedIndex = BossComboBox.FindStringExact(Config.valueFromTableForEdit["Начальник наряда"]);
                 DispComboBox.SelectedIndex = DispComboBox.FindStringExact(Config.valueFromTableForEdit["Диспетчер"]);
             }
