@@ -59,6 +59,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
                 return;
             }
+            signalComboBox.SelectedIndex = 0;
             
         }
 
@@ -100,6 +101,15 @@ namespace BD7
 
         private void addButton_Click(object sender, EventArgs e)
         {
+
+            if (nameTextBox.Text == ""
+                || priceTextBox.Text == ""
+                )
+            {
+                MessageBox.Show("Не заполнено одно из полей");
+                return;
+            }
+
             var vals = PrepareData(new Dictionary<string, string>()
             {
                 ["\"Name\""] = nameTextBox.Text,

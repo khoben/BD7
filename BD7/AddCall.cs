@@ -83,6 +83,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
             dataTable.Clear();
+            ContractComboBox.SelectedIndex = 0;
 
             // Начальники наряда
             dataTable = new DataTable();
@@ -115,6 +116,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
             dataTable.Clear();
+            BossComboBox.SelectedIndex = 0;
 
             // Диспетчеры
             dataTable = new DataTable();
@@ -147,6 +149,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
             dataTable.Clear();
+            DispComboBox.SelectedIndex = 0;
         }
 
         private void FalseCallCheckBox_CheckedChanged(object sender, EventArgs e)

@@ -84,6 +84,12 @@ namespace BD7
 
         private void AddInfo(object sender, EventArgs e)
         {
+            if (surnameTextBox.Text == "" || nameTextBox.Text == "" || SMTextBox.Text == "0000"
+                || IDMTextBox.Text == "000000" || INNMTextBox.Text == "000000000000")
+            {
+                MessageBox.Show("Не заполнено одно из обязательных полей");
+            }
+            
             Dictionary<string, string> vals = new Dictionary<string, string>()
             {
                 ["\"Surname\""] = surnameTextBox.Text,
@@ -122,7 +128,6 @@ namespace BD7
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
                 return;
             }
 

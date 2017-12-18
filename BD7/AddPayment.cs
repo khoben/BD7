@@ -114,9 +114,11 @@ namespace BD7
             // Заглушка на проверку правильности ввода
             if ((typePaymentComboBox.SelectedIndex == -1) ||
                 (accountantComboBox.SelectedIndex == -1) ||
-                (contractComboBox.SelectedIndex == -1))
+                (contractComboBox.SelectedIndex == -1) ||
+                sumTextBox.Text == ""
+                || dateTextBox.Text == "  .  .")
             {
-                MessageBox.Show("Не указаны одно или более обязательных полей");
+                MessageBox.Show("Не указаны одно или более полей");
                 return;
             }
 
@@ -217,6 +219,7 @@ namespace BD7
                 return;
             }
             dataTable.Clear();
+            typePaymentComboBox.SelectedIndex = 0;
 
             // контракт
             try
@@ -245,6 +248,7 @@ namespace BD7
                 return;
             }
             dataTable.Clear();
+            contractComboBox.SelectedIndex = 0;
 
             // бухгалтер
             try
@@ -277,6 +281,7 @@ namespace BD7
                 return;
             }
             dataTable.Clear();
+            accountantComboBox.SelectedIndex = 0;
 
         }
     }

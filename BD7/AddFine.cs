@@ -75,6 +75,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
             dataTable.Clear();
+            ContractComboBox.SelectedIndex = 0;
 
             // Бухгалтер
             dataTable = new DataTable();
@@ -107,6 +108,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
             dataTable.Clear();
+            BComboBox.SelectedIndex = 0;
 
             // Тип штрафа
             dataTable = new DataTable();
@@ -131,6 +133,7 @@ namespace BD7
                 MessageBox.Show(ex.Message.ToString());
             }
             dataTable.Clear();
+            FineTypeComboBox.SelectedIndex = 0;
         }
 
         public AddFine(MainForm mainForm)
