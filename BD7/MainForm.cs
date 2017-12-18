@@ -593,7 +593,7 @@ namespace BD7
         }
 
         // украденные вещи
-        public void StolenList()
+        public void Stolen_stuffssList()
         {
             try
             {

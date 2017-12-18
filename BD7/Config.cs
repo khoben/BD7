@@ -34,7 +34,7 @@ namespace BD7
             ["Платежи"] = "Payments",
             ["Штрафы"] = "Fines",
             ["Сигналы тревоги"] = "Calls",
-            ["Украденные вещи"] = "Stolen"
+            ["Украденные вещи"] = "Stolen_stuffss"
         };
 
         public static Dictionary<string, string> TrueFalse = new Dictionary<string, string>()

@@ -95,6 +95,12 @@
     <Compile Include="AddPayment.Designer.cs">
       <DependentUpon>AddPayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddStolen_stuffs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddStolen_stuffs.Designer.cs">
+      <DependentUpon>AddStolen_stuffs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddPayment.resx">
       <DependentUpon>AddPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddStolen_stuffs.resx">
+      <DependentUpon>AddStolen_stuffs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
