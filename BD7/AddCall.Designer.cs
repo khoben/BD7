@@ -246,6 +246,7 @@
             this.Controls.Add(this.DateLabel);
             this.Name = "AddCall";
             this.Text = "Добавить вызов";
+            this.Load += new System.EventHandler(this.AddCall_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

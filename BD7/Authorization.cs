@@ -71,6 +71,11 @@ namespace BD7
                 role = AccessRoles.Inspector;
             }
 
+            else if (login == "director" && password == "12345")
+            {
+                role = AccessRoles.Director;
+            }
+
             else
             {
                 MessageBox.Show("Неверный логин или пароль");

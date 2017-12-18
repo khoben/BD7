@@ -35,6 +35,9 @@ namespace BD7
             //int menuItemCount = GetMenuItemCount(hMenu);
             //RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
 
+            if (_currentRole != AccessRoles.Director)
+                this.ToogleRawEditButton.Enabled = false;
+
             this.LabelUsername.Text = "Пользователь: " + Authorization.login;
 
             this.queryInfoLabel.Text = "Клиенты";

@@ -23,7 +23,7 @@ namespace BD7
         {
             InitializeComponent();
 
-            FillForm();
+
         }
 
         // Заполнение формы при старте
@@ -206,6 +206,25 @@ namespace BD7
             return newDict;
         }
 
+        private void AddFine_Load(object sender, EventArgs e)
+        {
+            if (Text == "Редактирование")
+            {
+                this.AddButton.Text = "Сохранить";
+
+                DateMTextBox.Text = Config.valueFromTableForEdit["Дата"];
+                SubMTextBox.Text = Config.valueFromTableForEdit["Сумма"];
+
+                updateComboBoxies();
+
+                ContractComboBox.SelectedIndex = ContractComboBox.FindStringExact(Config.valueFromTableForEdit["Договор"]);
+                BComboBox.SelectedIndex = BComboBox.FindStringExact(Config.valueFromTableForEdit["Сотрудник"]);
+                FineTypeComboBox.SelectedIndex = FineTypeComboBox.FindStringExact(Config.valueFromTableForEdit["Тип"]);
+            }
+            else
+                FillForm();
+        }
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             // Заглушка на проверку правильности ввода
@@ -230,9 +249,19 @@ namespace BD7
 
             try
             {
-                Authorization.ODBC.Insert("\"Fine\"",
+                if (Text == "Редактирование")
+                {
+                    Authorization.ODBC.Update("\"Fine\"", Config.valueFromTableForEdit["ID"], vals);
+
+                    MessageBox.Show("Штраф успешно обновлен.");
+                }
+                else
+                {
+                    Authorization.ODBC.Insert("\"Fine\"",
                         vals
                     );
+                    MessageBox.Show("Штраф добавлен.");
+                }
             }
             catch (Exception ex)
             {

@@ -114,22 +114,51 @@ namespace BD7
 
             try
             {
-                Authorization.ODBC.Insert("\"Payment\"",
+                if (Text == "Редактирование")
+                {
+                    Authorization.ODBC.Update("\"Payment\"", Config.valueFromTableForEdit["ID"], vals);
+
+                    MessageBox.Show("Платеж успешно обновлен.");
+                }
+                else
+                {
+                    Authorization.ODBC.Insert("\"Payment\"",
                     vals
                 );
+                    MessageBox.Show("Платеж добавлен.");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
                 return;
             }
-
-            MessageBox.Show("Платеж добавлен.");
             if (mainForm != null)
             {
                 mainForm.ContractsList();
             }
             this.Close();
+        }
+
+        private void AddPayment_Load(object sender, EventArgs e)
+        {
+            if (Text == "Редактирование")
+            {
+                this.addButton.Text = "Сохранить";
+
+                dateTextBox.Text = Config.valueFromTableForEdit["Дата"];
+                sumTextBox.Text = Config.valueFromTableForEdit["Сумма"];
+
+                UpdateComboboxes();
+
+                typePaymentComboBox.SelectedIndex = typePaymentComboBox.FindStringExact(Config.valueFromTableForEdit["Тип платежа"]);
+
+                //Договор и сотрудник не добавляются
+                contractComboBox.SelectedIndex = contractComboBox.FindStringExact(Config.valueFromTableForEdit["Договор"]);
+                accountantComboBox.SelectedIndex = accountantComboBox.FindStringExact(Config.valueFromTableForEdit["Сотрудник"]);
+            }
+            else
+                FillForm();
         }
 
         public void FillForm()

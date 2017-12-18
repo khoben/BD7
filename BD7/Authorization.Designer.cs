@@ -42,7 +42,7 @@
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(177, 20);
             this.loginTextBox.TabIndex = 0;
-            this.loginTextBox.Text = "manager";
+            this.loginTextBox.Text = "director";
             // 
             // passwordTextBox
             // 
