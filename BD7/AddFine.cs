@@ -233,6 +233,7 @@ namespace BD7
                 Authorization.ODBC.Insert("\"Fine\"",
                         vals
                     );
+                MessageBox.Show("Штраф успешно добавлен");
             }
             catch (Exception ex)
             {
